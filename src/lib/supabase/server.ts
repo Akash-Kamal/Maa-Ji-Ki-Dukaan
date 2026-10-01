@@ -1,0 +1,40 @@
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { cookies, headers } from "next/headers";
+
+export interface CookieToSet {
+  name: string;
+  value: string;
+  options?: CookieOptions;
+}
+
+export async function createClient() {
+  const cookieStore = await cookies();
+  const headerStore = await headers();
+  const authHeader = headerStore.get("authorization");
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error("Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY.");
+  }
+
+  return createServerClient(supabaseUrl, supabaseAnonKey, {
+    global: {
+      headers: authHeader ? { Authorization: authHeader } : {},
+    },
+    cookies: {
+      getAll() {
+        return cookieStore.getAll();
+      },
+      setAll(cookiesToSet: CookieToSet[]) {
+        try {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options)
+          );
+        } catch {
+          // Handled in middleware
+        }
+      },
+    },
+  });
+}
