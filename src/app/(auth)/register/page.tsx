@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { BeveragePatternBackground } from "@/components/ui/BeveragePatternBackground";
 import type { UserRole } from "@/types";
 
 export default function RegisterPage() {
@@ -67,7 +68,7 @@ export default function RegisterPage() {
       }
 
       setSuccessMessage(
-        "Wholesale account created successfully! Redirecting to login..."
+        "Partner account created successfully! Redirecting to login..."
       );
       setTimeout(() => {
         router.push("/login");
@@ -80,21 +81,28 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cream-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-xl text-center">
+    <div className="relative min-h-screen bg-[#F0FDF4]/50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+      <BeveragePatternBackground variant="auth" />
+
+      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-xl text-center">
         <div className="inline-flex justify-center mb-3">
-          <BrandLogo href="/" size="lg" />
+          <BrandLogo
+            href="/"
+            size="lg"
+            layout="vertical"
+            tagline="Har Cheez Ek Jagah. Har Koi Ek Jagah."
+          />
         </div>
-        <h2 className="text-2xl font-extrabold text-charcoal-900 tracking-tight">
-          Apply for Wholesale Account
+        <h2 className="text-2xl font-black text-charcoal-900 tracking-tight">
+          Partner Account Sign Up
         </h2>
-        <p className="mt-1 text-xs text-warmGray-500">
-          Targeting 20–30 central beverage trade accounts only.
+        <p className="mt-1 text-xs text-warmGray-500 font-medium">
+          Direct registration for retailers & distributors.
         </p>
       </div>
 
-      <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-xl px-4">
-        <Card variant="default" padding="lg" className="shadow-lg">
+      <div className="relative z-10 mt-6 sm:mx-auto sm:w-full sm:max-w-xl">
+        <Card variant="default" padding="lg" className="shadow-xl shadow-brand-950/5 border border-warmGray-200/90 rounded-2xl sm:rounded-3xl backdrop-blur-sm">
           <form onSubmit={handleRegister} className="space-y-4">
             {errorMessage && (
               <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
@@ -235,7 +243,7 @@ export default function RegisterPage() {
               className="w-full font-bold mt-4"
               isLoading={loading}
             >
-              Submit Partner Application
+              Sign Up
               <ArrowRight className="w-4 h-4 ml-1.5" />
             </Button>
           </form>

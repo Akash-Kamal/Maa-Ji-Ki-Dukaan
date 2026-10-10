@@ -175,7 +175,7 @@ export default function AdminNewProductPage() {
         brand_id: matchedBrand ? matchedBrand.id : brands[0]?.id || "",
         category_id: matchedCat ? matchedCat.id : categories[1]?.id || "",
         name: mockResult.productName.value || "",
-        description: `${mockResult.productName.value} sparkling beverage wholesale cases.`,
+        description: `${mockResult.productName.value} sparkling beverage cases.`,
       });
 
       // Pre-fill variant fields without inventing price or stock
@@ -317,10 +317,10 @@ export default function AdminNewProductPage() {
         <ShieldAlert className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
         <div>
           <span className="font-bold block text-sm text-amber-950">
-            Wholesale Safety Guardrails Enforced
+            Seller Safety Guardrails Enforced
           </span>
           <p className="mt-0.5 leading-relaxed text-amber-900">
-            Selling units are strictly <strong>CASES / BOXES</strong>. The AI assistant extracts brand, size, and visible pack count from packaging images, but will <strong>NEVER</strong> invent wholesale prices or warehouse stock.
+            Selling units are strictly <strong>CASES / BOXES</strong>. The AI assistant extracts brand, size, and visible pack count from packaging images, but will <strong>NEVER</strong> invent prices or warehouse stock.
           </p>
         </div>
       </div>
@@ -339,7 +339,7 @@ export default function AdminNewProductPage() {
             )}
           </div>
 
-          <div className="border-2 border-dashed border-warmGray-300 rounded-2xl p-6 text-center hover:border-brand-500 transition-colors bg-cream-50/50">
+          <div className="border-2 border-dashed border-warmGray-300 rounded-2xl p-6 text-center hover:border-brand-500 transition-colors bg-brand-50/30">
             <input
               type="file"
               id="product-image-upload"
@@ -351,7 +351,7 @@ export default function AdminNewProductPage() {
               htmlFor="product-image-upload"
               className="cursor-pointer flex flex-col items-center justify-center space-y-2"
             >
-              <div className="w-12 h-12 rounded-full bg-cream-200 flex items-center justify-center text-brand-700">
+              <div className="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-700">
                 <UploadCloud className="w-6 h-6" />
               </div>
               <span className="text-sm font-bold text-charcoal-900">
@@ -416,7 +416,7 @@ export default function AdminNewProductPage() {
           )}
 
           {analysisResult && (
-            <div className="rounded-xl bg-cream-50 border border-warmGray-200 p-4 space-y-2 text-xs">
+            <div className="rounded-xl bg-brand-50/50 border border-warmGray-200 p-4 space-y-2 text-xs">
               <span className="font-bold text-charcoal-900 uppercase tracking-wider text-[11px] block border-b border-warmGray-200 pb-1">
                 AI Detected Packaging Attributes
               </span>
@@ -457,7 +457,7 @@ export default function AdminNewProductPage() {
               2. Product Master & Variant Specifications
             </h2>
             <p className="text-xs text-warmGray-500 mt-0.5">
-              Enter product details and configure case wholesale rates.
+              Enter product details and configure case rates.
             </p>
           </div>
 
@@ -476,7 +476,7 @@ export default function AdminNewProductPage() {
 
           <form onSubmit={handleApproveAndSave} className="space-y-4">
             {/* Master Product Fields */}
-            <div className="space-y-3 p-4 rounded-xl bg-cream-50/70 border border-warmGray-200">
+            <div className="space-y-3 p-4 rounded-xl bg-brand-50/40 border border-warmGray-200">
               <span className="text-xs font-bold uppercase tracking-wider text-charcoal-800 block">
                 Product Details
               </span>
@@ -621,7 +621,7 @@ export default function AdminNewProductPage() {
                     {/* Wholesale Case Pricing and Stock */}
                     <div className="grid grid-cols-2 gap-2.5 pt-1">
                       <Input
-                        label="Wholesale Price / Case (₹)"
+                        label="Seller Price / Case (₹)"
                         type="number"
                         min={0}
                         placeholder="e.g. 600 (Blank if TBD)"
@@ -665,7 +665,7 @@ export default function AdminNewProductPage() {
                 className="w-full font-bold shadow-md"
               >
                 <Save className="w-4 h-4 mr-1.5" />
-                Approve & Save Wholesale Product
+                Approve & Save Product
               </Button>
             </div>
           </form>

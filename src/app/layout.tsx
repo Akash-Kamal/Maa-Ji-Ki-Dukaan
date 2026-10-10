@@ -3,9 +3,9 @@ import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Maa Ji Ki Dukaan | Wholesale Beverage Ordering Platform",
+  title: "Maa Ji Ki Dukaan | Direct Seller Beverage Platform",
   description:
-    "Wholesale Shopping. Made Simple. Central wholesale beverage ordering portal for verified retailers, distributors, and vendors.",
+    "Direct Seller Ordering. Made Simple. Central beverage ordering portal for verified retailers, distributors, and vendors.",
   icons: {
     icon: "/images/logo.png",
     apple: "/images/logo.png",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-cream-50 font-sans antialiased text-charcoal-900">
+      <body className="min-h-screen bg-white font-sans antialiased text-charcoal-900">
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

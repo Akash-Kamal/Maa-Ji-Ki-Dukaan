@@ -19,7 +19,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen flex bg-cream-50/60 text-charcoal-900">
+    <div className="min-h-screen flex bg-white text-charcoal-900">
       {/* Sidebar with Mobile Support */}
       <AdminSidebar
         mobileOpen={mobileMenuOpen}

@@ -100,7 +100,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               <div className="flex flex-col items-center justify-center text-center">
                 <Package className="w-24 h-24 stroke-[1] text-warmGray-300 mb-3" />
                 <p className="text-xs font-bold text-warmGray-400 uppercase tracking-widest">
-                  {product.brand?.name} Wholesale Case
+                  {product.brand?.name} Seller Case
                 </p>
                 <span className="text-[11px] text-warmGray-400 mt-1">
                   Pack: {currentVariant.variant_name}
@@ -125,7 +125,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   key={imgUrl}
                   type="button"
                   onClick={() => setSelectedGalleryIndex(idx)}
-                  className={`relative w-16 h-16 rounded-xl border p-1 bg-cream-50 overflow-hidden flex-shrink-0 transition-all ${
+                  className={`relative w-16 h-16 rounded-xl border p-1 bg-brand-50/40 overflow-hidden flex-shrink-0 transition-all ${
                     idx === selectedGalleryIndex
                       ? "border-charcoal-950 ring-2 ring-charcoal-950/20 shadow-sm"
                       : "border-warmGray-200 opacity-60 hover:opacity-100 hover:border-warmGray-300"
@@ -157,7 +157,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </h1>
 
             <p className="text-sm text-warmGray-600 mt-3 leading-relaxed">
-              {product.description || "Authorized authentic wholesale beverage case stock."}
+              {product.description || "Authorized authentic direct beverage case stock."}
             </p>
 
             {/* Variant / Size Selection */}
@@ -181,7 +181,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                         className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border ${
                           isSelected
                             ? "bg-charcoal-950 text-white border-charcoal-950 shadow-sm"
-                            : "bg-cream-50 text-charcoal-800 hover:bg-cream-100 border-warmGray-200"
+                            : "bg-brand-50 text-charcoal-800 hover:bg-brand-100 border-warmGray-200"
                         }`}
                       >
                         {v.variant_name}
@@ -194,7 +194,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             )}
 
             {/* Packaging Specifications */}
-            <div className="grid grid-cols-2 gap-3 mt-6 p-4 rounded-xl bg-cream-50 border border-warmGray-200 text-xs">
+            <div className="grid grid-cols-2 gap-3 mt-6 p-4 rounded-xl bg-brand-50/40 border border-warmGray-200 text-xs">
               <div>
                 <span className="text-warmGray-500 font-medium block">Pieces per Case:</span>
                 <span className="font-bold text-charcoal-900 text-sm">
@@ -215,7 +215,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                 <div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-charcoal-600">
-                      Wholesale Price / Case:
+                      Seller Price / Case:
                     </span>
                     <span className="text-3xl font-black text-charcoal-950 tracking-tight">
                       ₹{currentVariant.price_per_case?.toLocaleString("en-IN")}
@@ -280,7 +280,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                     Rate Awaiting Central Confirmation
                   </div>
                   <p className="leading-relaxed">
-                    This beverage variant is in the catalog, but current batch wholesale pricing is being verified. Please request price directly from the wholesale desk.
+                    This beverage variant is in the catalog, but current batch seller pricing is being verified. Please request price directly from operations.
                   </p>
                 </div>
               )}
@@ -336,9 +336,9 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
             {addedToast && (
               <div className="flex items-center justify-between text-xs p-3 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200">
-                <span className="font-semibold">Cases reserved in wholesale cart.</span>
+                <span className="font-semibold">Cases reserved in cart.</span>
                 <Link href="/cart" className="font-bold underline hover:text-emerald-950">
-                  View Wholesale Cart →
+                  View Cart →
                 </Link>
               </div>
             )}

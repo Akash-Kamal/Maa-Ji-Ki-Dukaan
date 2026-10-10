@@ -66,7 +66,7 @@ export default function AdminSettingsPage() {
   return (
     <div className="space-y-6 max-w-5xl pb-16">
       <AdminHeader
-        title="Wholesaler Portal Settings & Audit"
+        title="Seller Portal Settings & Audit"
         subtitle="Platform configuration, dispatch thresholds, and immutable admin audit trail."
       />
 
@@ -84,7 +84,7 @@ export default function AdminSettingsPage() {
             <Building2 className="w-5 h-5 text-brand-600" />
             <div>
               <h2 className="text-base font-bold text-charcoal-900">
-                Wholesale Business Profile
+                Seller Business Profile
               </h2>
               <p className="text-xs text-warmGray-500">
                 Official entity name and trade details shown on invoices and retailer delivery notes.
@@ -94,7 +94,7 @@ export default function AdminSettingsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
-              label="Wholesale Trading Name"
+              label="Seller Trading Name"
               value={settings.business_name}
               onChange={(e) => setSettings({ ...settings, business_name: e.target.value })}
               required
@@ -121,7 +121,7 @@ export default function AdminSettingsPage() {
               required
             />
             <Input
-              label="Wholesale GSTIN"
+              label="Seller GSTIN"
               value={settings.gstin || ""}
               onChange={(e) => setSettings({ ...settings, gstin: e.target.value })}
               placeholder="07AAAAA0000A1Z5"
@@ -170,7 +170,7 @@ export default function AdminSettingsPage() {
               onChange={(e) =>
                 setSettings({ ...settings, delivery_charge: Number(e.target.value) })
               }
-              helperText="Set to 0 for Free Wholesale Delivery"
+              helperText="Set to 0 for Free Delivery"
               required
             />
           </div>
@@ -184,7 +184,7 @@ export default function AdminSettingsPage() {
               {(
                 [
                   { id: "cash_on_delivery", label: "Cash on Delivery" },
-                  { id: "credit", label: "Wholesale Credit (Khata)" },
+                  { id: "credit", label: "Seller Credit (Khata)" },
                   { id: "bank_transfer", label: "NEFT / RTGS" },
                   { id: "upi", label: "Direct UPI QR" },
                 ] as const
@@ -236,7 +236,7 @@ export default function AdminSettingsPage() {
               helperText="Badge displayed when case rate is unassigned"
             />
 
-            <div className="p-3.5 rounded-xl border border-warmGray-200 bg-cream-50 flex items-center justify-between">
+            <div className="p-3.5 rounded-xl border border-warmGray-200 bg-brand-50/50 flex items-center justify-between">
               <div>
                 <span className="text-xs font-bold text-charcoal-900 block">
                   Show Inactive / Archived Products
@@ -288,7 +288,7 @@ export default function AdminSettingsPage() {
         </div>
 
         {auditLogs.length === 0 ? (
-          <div className="p-8 text-center text-xs text-warmGray-500 bg-cream-50/50 rounded-xl border border-dashed border-warmGray-200">
+          <div className="p-8 text-center text-xs text-warmGray-500 bg-brand-50/30 rounded-xl border border-dashed border-warmGray-200">
             No admin audit logs recorded in session yet. Modifications to prices, inventory, and orders will appear here automatically.
           </div>
         ) : (
@@ -349,7 +349,7 @@ export default function AdminSettingsPage() {
                       </span>
                     </TableCell>
                     <TableCell>
-                      <div className="text-[11px] font-mono text-charcoal-700 max-w-xs truncate bg-cream-50 p-1.5 rounded border border-warmGray-200">
+                      <div className="text-[11px] font-mono text-charcoal-700 max-w-xs truncate bg-brand-50/50 p-1.5 rounded border border-warmGray-200">
                         {log.new_value
                           ? JSON.stringify(log.new_value)
                           : log.previous_value

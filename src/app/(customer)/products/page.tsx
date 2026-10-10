@@ -142,21 +142,21 @@ function ProductsContent() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             <h1 className="text-2xl sm:text-3xl font-black text-charcoal-900 tracking-tight">
-              Wholesale Beverage Catalog
+              Seller Beverage Catalog
             </h1>
             <p className="text-xs sm:text-sm text-warmGray-500 font-medium mt-0.5">
-              Strictly B2B wholesale case purchasing for verified business partners.
+              Direct case ordering for verified retail and business partners.
             </p>
           </div>
-          <div className="text-xs font-bold text-warmGray-500 bg-cream-100 border border-warmGray-200 px-3 py-1.5 rounded-xl self-start sm:self-auto">
-            {loading ? "Loading..." : `${sortedProducts.length} Wholesale Items Available`}
+          <div className="text-xs font-bold text-warmGray-500 bg-brand-50 border border-warmGray-200 px-3 py-1.5 rounded-xl self-start sm:self-auto">
+            {loading ? "Loading..." : `${sortedProducts.length} Products Available`}
           </div>
         </div>
 
         {/* Global Search Component */}
         <div className="max-w-xl">
           <SearchBar
-            placeholder="Search wholesale beverages (e.g. Red Bull 250ml, Coke 250ml)..."
+            placeholder="Search beverages (e.g. Red Bull 250ml, Coke 250ml)..."
             value={search}
             onChange={setSearch}
           />
@@ -173,8 +173,8 @@ function ProductsContent() {
               onClick={() => setSelectedCategory("all")}
               className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 selectedCategory === "all"
-                  ? "bg-charcoal-950 text-white shadow-sm"
-                  : "bg-white border border-warmGray-200 text-charcoal-700 hover:bg-cream-100"
+                  ? "bg-brand-600 text-white shadow-sm"
+                  : "bg-white border border-warmGray-200 text-charcoal-700 hover:bg-brand-50"
               }`}
             >
               All Categories
@@ -185,8 +185,8 @@ function ProductsContent() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   selectedCategory === cat.id
-                    ? "bg-charcoal-950 text-white shadow-sm"
-                    : "bg-white border border-warmGray-200 text-charcoal-700 hover:bg-cream-100"
+                    ? "bg-brand-600 text-white shadow-sm"
+                    : "bg-white border border-warmGray-200 text-charcoal-700 hover:bg-brand-50"
                 }`}
               >
                 {cat.name}
@@ -224,7 +224,7 @@ function ProductsContent() {
               className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-colors ${
                 selectedBrand === "all"
                   ? "bg-brand-600 text-white"
-                  : "bg-cream-100 text-charcoal-700 hover:bg-cream-200 border border-warmGray-200"
+                  : "bg-brand-50 text-charcoal-700 hover:bg-brand-100 border border-warmGray-200"
               }`}
             >
               All Brands
@@ -236,7 +236,7 @@ function ProductsContent() {
                 className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-colors ${
                   selectedBrand === brand.id
                     ? "bg-brand-600 text-white"
-                    : "bg-cream-100 text-charcoal-700 hover:bg-cream-200 border border-warmGray-200"
+                    : "bg-brand-50 text-charcoal-700 hover:bg-brand-100 border border-warmGray-200"
                 }`}
               >
                 {brand.name}
@@ -278,19 +278,19 @@ function ProductsContent() {
         <div className="flex items-center gap-2 flex-wrap text-xs text-warmGray-600 pt-1">
           <span className="font-semibold text-charcoal-800">Active Filters:</span>
           {selectedCategory !== "all" && (
-            <span className="inline-flex items-center gap-1 bg-cream-100 text-charcoal-800 px-2 py-0.5 rounded-md border border-warmGray-200 font-semibold">
+            <span className="inline-flex items-center gap-1 bg-brand-50 text-charcoal-800 px-2 py-0.5 rounded-md border border-warmGray-200 font-semibold">
               Category: {categories.find((c) => c.id === selectedCategory)?.name}
               <button onClick={() => setSelectedCategory("all")}><X className="w-3 h-3" /></button>
             </span>
           )}
           {selectedBrand !== "all" && (
-            <span className="inline-flex items-center gap-1 bg-cream-100 text-charcoal-800 px-2 py-0.5 rounded-md border border-warmGray-200 font-semibold">
+            <span className="inline-flex items-center gap-1 bg-brand-50 text-charcoal-800 px-2 py-0.5 rounded-md border border-warmGray-200 font-semibold">
               Brand: {brands.find((b) => b.id === selectedBrand)?.name}
               <button onClick={() => setSelectedBrand("all")}><X className="w-3 h-3" /></button>
             </span>
           )}
           {inStockOnly && (
-            <span className="inline-flex items-center gap-1 bg-cream-100 text-charcoal-800 px-2 py-0.5 rounded-md border border-warmGray-200 font-semibold">
+            <span className="inline-flex items-center gap-1 bg-brand-50 text-charcoal-800 px-2 py-0.5 rounded-md border border-warmGray-200 font-semibold">
               In Stock Only
               <button onClick={() => setInStockOnly(false)}><X className="w-3 h-3" /></button>
             </span>
@@ -308,7 +308,7 @@ function ProductsContent() {
       {loading ? (
         <div className="flex items-center justify-center py-20 gap-3 text-warmGray-500 font-semibold">
           <Loader2 className="w-6 h-6 animate-spin text-brand-600" />
-          Loading wholesale catalog from database...
+          Loading seller catalog from database...
         </div>
       ) : sortedProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -319,7 +319,7 @@ function ProductsContent() {
       ) : (
         <EmptyState
           icon={<Package className="w-8 h-8 text-warmGray-400" />}
-          title="No wholesale beverages matched your criteria"
+          title="No beverage products matched your criteria"
           description="Try broadening your search term or clearing active brand and category filters."
           action={
             <Button size="md" variant="primary" onClick={resetAllFilters}>
@@ -337,7 +337,7 @@ function ProductsContent() {
               <h2 className="text-lg font-black text-charcoal-900">Filters & Sort</h2>
               <button
                 onClick={() => setMobileFilterOpen(false)}
-                className="p-1 rounded-full text-warmGray-500 hover:bg-cream-100"
+                className="p-1 rounded-full text-warmGray-500 hover:bg-brand-50"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -371,8 +371,8 @@ function ProductsContent() {
                   onClick={() => setSelectedCategory("all")}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
                     selectedCategory === "all"
-                      ? "bg-charcoal-950 text-white"
-                      : "bg-cream-100 text-charcoal-800"
+                      ? "bg-brand-600 text-white"
+                      : "bg-brand-50 text-charcoal-800"
                   }`}
                 >
                   All
@@ -383,8 +383,8 @@ function ProductsContent() {
                     onClick={() => setSelectedCategory(c.id)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
                       selectedCategory === c.id
-                        ? "bg-charcoal-950 text-white"
-                        : "bg-cream-100 text-charcoal-800"
+                        ? "bg-brand-600 text-white"
+                        : "bg-brand-50 text-charcoal-800"
                     }`}
                   >
                     {c.name}
@@ -404,7 +404,7 @@ function ProductsContent() {
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
                     selectedBrand === "all"
                       ? "bg-brand-600 text-white"
-                      : "bg-cream-100 text-charcoal-800"
+                      : "bg-brand-50 text-charcoal-800"
                   }`}
                 >
                   All
@@ -416,7 +416,7 @@ function ProductsContent() {
                     className={`px-2.5 py-1 rounded-lg text-xs font-bold ${
                       selectedBrand === b.id
                         ? "bg-brand-600 text-white"
-                        : "bg-cream-100 text-charcoal-800"
+                        : "bg-brand-50 text-charcoal-800"
                     }`}
                   >
                     {b.name}
@@ -471,7 +471,7 @@ export default function CustomerProductsPage() {
       fallback={
         <div className="flex items-center justify-center py-20 text-warmGray-500 font-semibold gap-2">
           <Loader2 className="w-5 h-5 animate-spin text-brand-600" />
-          Loading Wholesale Catalog...
+          Loading Seller Catalog...
         </div>
       }
     >

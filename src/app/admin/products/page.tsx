@@ -241,7 +241,7 @@ export default function AdminProductsPage() {
   if (loading) {
     return (
       <div className="space-y-6">
-        <AdminHeader title="Wholesale Master Catalog & Variants" subtitle="Loading catalog from database..." />
+        <AdminHeader title="Seller Master Catalog & Variants" subtitle="Loading catalog from database..." />
         <div className="flex items-center justify-center py-24">
           <div className="w-10 h-10 border-4 border-brand-600 border-t-transparent rounded-full animate-spin" />
         </div>
@@ -252,7 +252,7 @@ export default function AdminProductsPage() {
   return (
     <div className="space-y-6">
       <AdminHeader
-        title="Wholesale Master Catalog & Variants"
+        title="Seller Master Catalog & Variants"
         subtitle="Manage beverage master products, bottle/can variants, pieces per case, and case pricing."
         action={{
           label: "Create Product / Image Intake",
@@ -275,7 +275,7 @@ export default function AdminProductsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value as "all" | "active" | "inactive" | "review")}
-              className="px-3 py-2 text-xs font-semibold rounded-lg border border-warmGray-300 bg-cream-50 text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 text-xs font-semibold rounded-lg border border-warmGray-300 bg-white text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Only</option>
@@ -286,7 +286,7 @@ export default function AdminProductsPage() {
             <select
               value={selectedBrand}
               onChange={(e) => setSelectedBrand(e.target.value)}
-              className="px-3 py-2 text-xs font-semibold rounded-lg border border-warmGray-300 bg-cream-50 text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 text-xs font-semibold rounded-lg border border-warmGray-300 bg-white text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <option value="all">All Brands</option>
               {brands.map((b) => (
@@ -299,7 +299,7 @@ export default function AdminProductsPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-2 text-xs font-semibold rounded-lg border border-warmGray-300 bg-cream-50 text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="px-3 py-2 text-xs font-semibold rounded-lg border border-warmGray-300 bg-white text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
               <option value="all">All Categories</option>
               {categories.map((c) => (
@@ -323,16 +323,16 @@ export default function AdminProductsPage() {
             <div
               key={product.id}
               className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
-                product.is_active ? "border-warmGray-200 shadow-sm" : "border-warmGray-200 opacity-60 bg-cream-50/50"
+                product.is_active ? "border-warmGray-200 shadow-sm" : "border-warmGray-200 opacity-60 bg-warmGray-50"
               }`}
             >
               {/* Product Header Row */}
-              <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-cream-50/60 border-b border-warmGray-100">
+              <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-brand-50/30 border-b border-warmGray-100">
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
                     onClick={() => toggleExpand(product.id)}
-                    className="p-1 rounded-md text-warmGray-500 hover:bg-cream-200 transition-colors"
+                    className="p-1 rounded-md text-warmGray-500 hover:bg-brand-100 transition-colors"
                     aria-label="Toggle variants"
                   >
                     {isExpanded ? (
@@ -342,7 +342,7 @@ export default function AdminProductsPage() {
                     )}
                   </button>
 
-                  <div className="w-12 h-12 shrink-0 rounded-xl bg-cream-50 border border-warmGray-200 overflow-hidden flex items-center justify-center p-1.5 shadow-2xs">
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-white border border-warmGray-200 overflow-hidden flex items-center justify-center p-1.5 shadow-2xs">
                     {(() => {
                       const img = resolveBeverageImage(product.slug, null, product.product_image_url);
                       return img ? (
@@ -429,7 +429,7 @@ export default function AdminProductsPage() {
                         <TableHeaderCell>Variant / Pack</TableHeaderCell>
                         <TableHeaderCell>Packaging</TableHeaderCell>
                         <TableHeaderCell>Pieces / Case</TableHeaderCell>
-                        <TableHeaderCell>Wholesale Price / Case</TableHeaderCell>
+                        <TableHeaderCell>Seller Price / Case</TableHeaderCell>
                         <TableHeaderCell>Stock (Cases)</TableHeaderCell>
                         <TableHeaderCell>Status</TableHeaderCell>
                         <TableHeaderCell>Actions</TableHeaderCell>
@@ -462,7 +462,7 @@ export default function AdminProductsPage() {
 
                             <TableCell>
                               {v.pieces_per_case ? (
-                                <span className="text-xs font-bold text-charcoal-900 bg-cream-100 px-2 py-0.5 rounded border border-warmGray-200">
+                                <span className="text-xs font-bold text-charcoal-900 bg-brand-50 px-2 py-0.5 rounded border border-warmGray-200">
                                   {v.pieces_per_case} pcs / case
                                 </span>
                               ) : (
@@ -581,7 +581,7 @@ export default function AdminProductsPage() {
           isOpen={!!editingVariant}
           onClose={() => setEditingVariant(null)}
           title={`Edit Variant: ${editingVariant.product.name} — ${editingVariant.variant.variant_name}`}
-          description="Adjust wholesale price per case, pieces per pack, stock in cases, and review status."
+          description="Adjust seller price per case, pieces per pack, stock in cases, and review status."
           maxWidth="md"
         >
           <form onSubmit={handleSaveVariantEdit} className="space-y-4">
@@ -625,11 +625,11 @@ export default function AdminProductsPage() {
                     },
                   })
                 }
-                helperText="Total units inside 1 wholesale case"
+                helperText="Total units inside 1 case"
               />
 
               <Input
-                label="Wholesale Price / Case (₹)"
+                label="Seller Price / Case (₹)"
                 type="number"
                 min={0}
                 placeholder="Leave blank if TBD"
@@ -643,7 +643,7 @@ export default function AdminProductsPage() {
                     },
                   })
                 }
-                helperText="Wholesale price per whole case"
+                helperText="Price per whole case"
               />
             </div>
 
@@ -765,7 +765,7 @@ export default function AdminProductsPage() {
               />
 
               <Input
-                label="Wholesale Price / Case (₹)"
+                label="Seller Price / Case (₹)"
                 type="number"
                 min={0}
                 placeholder="e.g. 600 (Leave empty if TBD)"
@@ -773,7 +773,7 @@ export default function AdminProductsPage() {
                 onChange={(e) =>
                   setNewVariantForm({ ...newVariantForm, price_per_case: e.target.value })
                 }
-                helperText="Wholesale rate per case"
+                helperText="Rate per whole case"
               />
             </div>
 

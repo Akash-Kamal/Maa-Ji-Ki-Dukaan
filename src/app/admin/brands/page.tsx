@@ -146,7 +146,7 @@ export default function AdminBrandsPage() {
                   </span>
                 </TableCell>
                 <TableCell>
-                  <code className="text-xs bg-cream-100 px-2 py-0.5 rounded text-charcoal-700">
+                  <code className="text-xs bg-brand-50 px-2 py-0.5 rounded text-charcoal-700 border border-warmGray-200">
                     {brand.id}
                   </code>
                 </TableCell>
@@ -168,7 +168,7 @@ export default function AdminBrandsPage() {
                     <button
                       type="button"
                       onClick={() => handleOpenEdit(brand)}
-                      className="p-1.5 rounded-md hover:bg-cream-100 text-charcoal-700 hover:text-brand-600 transition-colors"
+                      className="p-1.5 rounded-md hover:bg-brand-50 text-charcoal-700 hover:text-brand-600 transition-colors"
                       title="Edit Brand"
                     >
                       <Edit2 className="w-3.5 h-3.5" />

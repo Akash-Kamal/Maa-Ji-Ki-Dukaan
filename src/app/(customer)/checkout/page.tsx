@@ -176,7 +176,7 @@ export default function CheckoutPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to place wholesale order.");
+        throw new Error(data.error || "Failed to place order.");
       }
 
       // Clear wholesale cart
@@ -220,7 +220,7 @@ export default function CheckoutPage() {
           </p>
           <Link href="/products" className="inline-block pt-2">
             <Button size="md" variant="primary" className="font-bold">
-              Browse Wholesale Catalog
+              Browse Seller Catalog
             </Button>
           </Link>
         </div>
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
       <div className="flex items-center justify-between border-b border-warmGray-200 pb-4">
         <div>
           <h1 className="text-2xl font-black text-charcoal-950 tracking-tight">
-            Wholesale Checkout
+            Checkout
           </h1>
           <p className="text-xs text-warmGray-500 mt-0.5">
             Review delivery destination and confirm central case dispatch.
@@ -352,7 +352,7 @@ export default function CheckoutPage() {
             <div className="flex items-center gap-2 border-b border-warmGray-100 pb-3">
               <CreditCard className="w-5 h-5 text-brand-600" />
               <h2 className="text-base font-extrabold text-charcoal-950">
-                Wholesale Payment Method
+                Payment Method
               </h2>
             </div>
 
@@ -361,7 +361,7 @@ export default function CheckoutPage() {
                 className={`flex flex-col p-3.5 rounded-xl border text-xs cursor-pointer transition-all ${
                   paymentMethod === "cash_on_delivery"
                     ? "border-brand-600 bg-brand-50/50 ring-1 ring-brand-600"
-                    : "border-warmGray-200 hover:bg-cream-100"
+                    : "border-warmGray-200 hover:bg-brand-50"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -383,11 +383,11 @@ export default function CheckoutPage() {
                 className={`flex flex-col p-3.5 rounded-xl border text-xs cursor-pointer transition-all ${
                   paymentMethod === "credit"
                     ? "border-brand-600 bg-brand-50/50 ring-1 ring-brand-600"
-                    : "border-warmGray-200 hover:bg-cream-100"
+                    : "border-warmGray-200 hover:bg-brand-50"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="font-extrabold text-charcoal-900">Wholesale Credit</span>
+                  <span className="font-extrabold text-charcoal-900">Seller Credit</span>
                   <input
                     type="radio"
                     name="payment"
@@ -405,7 +405,7 @@ export default function CheckoutPage() {
                 className={`flex flex-col p-3.5 rounded-xl border text-xs cursor-pointer transition-all ${
                   paymentMethod === "bank_transfer"
                     ? "border-brand-600 bg-brand-50/50 ring-1 ring-brand-600"
-                    : "border-warmGray-200 hover:bg-cream-100"
+                    : "border-warmGray-200 hover:bg-brand-50"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -419,7 +419,7 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <span className="text-[11px] text-warmGray-500">
-                  Transfer directly to wholesaler current account.
+                  Transfer directly to seller current account.
                 </span>
               </label>
             </div>
@@ -469,7 +469,7 @@ export default function CheckoutPage() {
             {/* Calculations Breakdown */}
             <div className="pt-3 border-t border-warmGray-100 space-y-2 text-xs">
               <div className="flex justify-between text-charcoal-700">
-                <span>Wholesale Cases:</span>
+                <span>Total Cases:</span>
                 <span className="font-bold">{totalCases} Cases</span>
               </div>
               <div className="flex justify-between text-charcoal-700">
@@ -481,7 +481,7 @@ export default function CheckoutPage() {
                 <span className="font-semibold text-charcoal-600">Calculated at Billing</span>
               </div>
               <div className="flex justify-between text-warmGray-500">
-                <span>Wholesale Delivery:</span>
+                <span>Delivery:</span>
                 <span className="font-semibold text-charcoal-600">To be confirmed</span>
               </div>
             </div>
@@ -490,7 +490,7 @@ export default function CheckoutPage() {
             <div className="pt-3 border-t border-warmGray-200 flex justify-between items-baseline">
               <div>
                 <span className="text-xs font-bold text-warmGray-500 uppercase tracking-wider block">
-                  Wholesale Total
+                  Order Total
                 </span>
                 <span className="text-2xl font-black text-charcoal-950 tracking-tight">
                   ₹{subtotalAmount.toLocaleString("en-IN")}
@@ -510,12 +510,12 @@ export default function CheckoutPage() {
               className="w-full font-bold shadow-md"
             >
               <CheckCircle2 className="w-4 h-4 mr-1.5" />
-              Place Wholesale Order
+              Place Order
             </Button>
 
             <div className="flex items-center justify-center gap-1.5 text-[11px] text-warmGray-500 text-center">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span>Direct B2B wholesaler dispatch guarantee</span>
+              <span>Direct B2B seller dispatch guarantee</span>
             </div>
           </Card>
         </div>

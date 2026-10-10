@@ -35,9 +35,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       secondary:
         "bg-charcoal-900 text-white hover:bg-charcoal-800 active:bg-charcoal-950 focus:ring-charcoal-700 shadow-sm",
       outline:
-        "border border-warmGray-300 bg-white text-charcoal-800 hover:bg-cream-100 hover:border-warmGray-400 focus:ring-brand-500",
+        "border border-warmGray-200 bg-white text-charcoal-900 hover:bg-brand-50 hover:text-brand-700 hover:border-brand-200 focus:ring-brand-500",
       ghost:
-        "text-charcoal-700 hover:bg-cream-200/60 active:bg-cream-200 focus:ring-warmGray-400",
+        "text-charcoal-700 hover:bg-brand-50 hover:text-brand-700 active:bg-brand-100 focus:ring-warmGray-400",
       danger:
         "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:ring-red-500 shadow-sm",
     };

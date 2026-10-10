@@ -162,7 +162,7 @@ export default function ReorderPage() {
       });
 
     if (addedCount > 0) {
-      setNotification(`Added ${addedCount} wholesale items to your active cart.`);
+      setNotification(`Added ${addedCount} items to your active cart.`);
       setTimeout(() => setNotification(null), 4000);
     }
   };
@@ -217,11 +217,11 @@ export default function ReorderPage() {
         <EmptyState
           icon={<Package className="w-8 h-8 text-warmGray-400" />}
           title="No past items available for reorder"
-          description="Once you complete wholesale beverage orders, your past case packs will appear here for fast reordering."
+          description="Once you complete beverage orders, your past case packs will appear here for fast reordering."
           action={
             <Link href="/products">
               <Button size="md" variant="primary">
-                Browse Wholesale Catalog
+                Browse Seller Catalog
               </Button>
             </Link>
           }
@@ -261,7 +261,7 @@ export default function ReorderPage() {
                   </div>
 
                   {/* Packaging data */}
-                  <div className="text-xs text-warmGray-500 font-medium space-y-1 bg-cream-50 p-2.5 rounded-xl border border-warmGray-200/80">
+                  <div className="text-xs text-warmGray-500 font-medium space-y-1 bg-brand-50/50 p-2.5 rounded-xl border border-warmGray-200/80">
                     <div className="flex justify-between">
                       <span>Packaging:</span>
                       <strong className="text-charcoal-800">

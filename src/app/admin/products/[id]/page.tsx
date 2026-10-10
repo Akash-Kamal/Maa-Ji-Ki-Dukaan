@@ -126,7 +126,7 @@ export default function AdminEditProductPage() {
       setProduct(updated);
       setFeedback({
         type: "success",
-        message: `Product "${updated.name}" updated successfully. Changes are live in wholesale catalog.`,
+        message: `Product "${updated.name}" updated successfully. Changes are live in seller catalog.`,
       });
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Failed to update product.";
@@ -358,7 +358,7 @@ export default function AdminEditProductPage() {
                   rows={3}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Wholesale packaging information, specifications, and beverage profile..."
+                  placeholder="Packaging information, specifications, and beverage profile..."
                   className="w-full rounded-lg border border-warmGray-300 bg-white px-3.5 py-2.5 text-sm text-charcoal-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                 />
               </div>
@@ -372,7 +372,7 @@ export default function AdminEditProductPage() {
                 Catalog Status & Asset
               </h2>
 
-              <div className="p-3 rounded-lg bg-cream-50 border border-warmGray-200">
+              <div className="p-3 rounded-lg bg-brand-50/50 border border-warmGray-200">
                 <label className="flex items-center gap-2.5 cursor-pointer">
                   <input
                     type="checkbox"
@@ -382,7 +382,7 @@ export default function AdminEditProductPage() {
                   />
                   <div>
                     <span className="text-xs font-bold text-charcoal-900 block">
-                      Active in Wholesale Catalog
+                      Active in Seller Catalog
                     </span>
                     <span className="text-[10px] text-warmGray-500 block">
                       When disabled, product is hidden from customer browsing.
@@ -403,7 +403,7 @@ export default function AdminEditProductPage() {
                   <span className="text-[10px] font-bold text-warmGray-400 block mb-1">
                     Image Preview
                   </span>
-                  <div className="w-full h-32 relative flex items-center justify-center bg-cream-50 rounded-lg overflow-hidden">
+                  <div className="w-full h-32 relative flex items-center justify-center bg-warmGray-50 rounded-lg overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={imageUrl}
@@ -429,7 +429,7 @@ export default function AdminEditProductPage() {
               Product Pack Variants (Strictly Cases/Boxes)
             </h2>
             <p className="text-xs text-warmGray-500 mt-0.5">
-              Each pack variant defines packaging size, pieces per case, wholesale case price, and live inventory.
+              Each pack variant defines packaging size, pieces per case, case price, and live inventory.
             </p>
           </div>
           <Button
@@ -450,7 +450,7 @@ export default function AdminEditProductPage() {
               <TableHeaderCell>Pack Size</TableHeaderCell>
               <TableHeaderCell>Packaging</TableHeaderCell>
               <TableHeaderCell>Pieces / Case</TableHeaderCell>
-              <TableHeaderCell>Wholesale Price / Case</TableHeaderCell>
+              <TableHeaderCell>Seller Price / Case</TableHeaderCell>
               <TableHeaderCell>Stock Cases</TableHeaderCell>
               <TableHeaderCell>Reorder Level</TableHeaderCell>
               <TableHeaderCell>Status</TableHeaderCell>
@@ -461,7 +461,7 @@ export default function AdminEditProductPage() {
             {(product.variants || []).map((v) => (
               <TableRow key={v.id}>
                 <TableCell>
-                  <span className="font-extrabold text-xs text-charcoal-900 bg-cream-100 px-2 py-0.5 rounded border border-warmGray-200">
+                  <span className="font-extrabold text-xs text-charcoal-900 bg-brand-50 px-2 py-0.5 rounded border border-warmGray-200">
                     {v.variant_name}
                   </span>
                 </TableCell>
@@ -614,7 +614,7 @@ export default function AdminEditProductPage() {
               />
             </div>
 
-            <div className="p-3 bg-cream-50 rounded-lg space-y-2 border border-warmGray-200">
+            <div className="p-3 bg-brand-50/50 rounded-lg space-y-2 border border-warmGray-200">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"

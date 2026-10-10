@@ -59,11 +59,11 @@ export function AdminSidebar({ mobileOpen = false, onCloseMobile }: AdminSidebar
 
       {/* Sidebar Content */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-charcoal-900 text-cream-50 flex flex-col shrink-0 border-r border-charcoal-800 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-charcoal-900 text-warmGray-200 flex flex-col shrink-0 border-r border-charcoal-800 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Wholesaler Head Branding */}
+        {/* Seller Head Branding */}
         <div className="p-5 border-b border-charcoal-800 flex items-center justify-between">
           <Link href="/admin" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-2xl p-1 bg-white border border-charcoal-700 shadow-sm flex items-center justify-center shrink-0 overflow-hidden group-hover:scale-105 transition-transform">
@@ -109,6 +109,7 @@ export function AdminSidebar({ mobileOpen = false, onCloseMobile }: AdminSidebar
               <Link
                 key={item.name}
                 href={item.href}
+                prefetch={false}
                 onClick={onCloseMobile}
                 className={`flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all ${
                   active
@@ -132,7 +133,7 @@ export function AdminSidebar({ mobileOpen = false, onCloseMobile }: AdminSidebar
                 <UserCheck className="w-4 h-4" />
               </div>
               <div className="overflow-hidden">
-                <p className="text-xs font-bold text-white truncate">Central Wholesaler</p>
+                <p className="text-xs font-bold text-white truncate">Central Seller</p>
                 <p className="text-[10px] text-warmGray-400 truncate">Maa Ji Ki Dukaan</p>
               </div>
             </div>

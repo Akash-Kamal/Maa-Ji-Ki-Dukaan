@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     // 1. Basic payload validations
     if (!items || !Array.isArray(items) || items.length === 0) {
       return NextResponse.json(
-        { error: "Cart is empty. Please select wholesale cases to order." },
+        { error: "Cart is empty. Please select cases to order." },
         { status: 400 }
       );
     }
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
 
     if (!authUser) {
       return NextResponse.json(
-        { error: "Authentication required to place wholesale orders." },
+        { error: "Authentication required to place orders." },
         { status: 401 }
       );
     }
@@ -72,14 +72,14 @@ export async function POST(request: Request) {
 
     if (profileErr || !profile) {
       return NextResponse.json(
-        { error: "Verified wholesale customer profile not found." },
+        { error: "Verified customer profile not found." },
         { status: 403 }
       );
     }
 
     if (!profile.is_active) {
       return NextResponse.json(
-        { error: "Your wholesale purchasing account is currently inactive. Please contact wholesaler." },
+        { error: "Your purchasing account is currently inactive. Please contact seller." },
         { status: 403 }
       );
     }
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
       const quantityCases = Number(item.quantityCases);
       if (!Number.isInteger(quantityCases) || quantityCases <= 0) {
         return NextResponse.json(
-          { error: `Invalid case quantity (${item.quantityCases}). Wholesale items are sold strictly in whole cases.` },
+          { error: `Invalid case quantity (${item.quantityCases}). Items are sold strictly in whole cases.` },
           { status: 400 }
         );
       }
@@ -122,8 +122,8 @@ export async function POST(request: Request) {
           *,
           product:products(*)
         `)
-        .eq("id", item.variantId)
-        .single();
+      .eq("id", item.variantId)
+      .single();
 
       if (varErr || !variant) {
         return NextResponse.json(
@@ -144,7 +144,7 @@ export async function POST(request: Request) {
       if (variant.price_per_case === null || variant.price_per_case === undefined) {
         return NextResponse.json(
           {
-            error: `${product.name} (${variant.variant_name}) pricing is awaiting wholesaler confirmation. Cannot be ordered at this time.`,
+            error: `${product.name} (${variant.variant_name}) pricing is awaiting seller confirmation. Cannot be ordered at this time.`,
           },
           { status: 400 }
         );
@@ -293,11 +293,11 @@ export async function POST(request: Request) {
       items: resolvedOrderItems,
       deliveryAddress,
       status: "confirmed",
-      message: "Wholesale order placed successfully with confirmed PostgreSQL snapshots.",
+      message: "Order placed successfully with confirmed snapshots.",
     });
   } catch (error: unknown) {
     console.error("Order creation fatal error:", error);
-    const message = error instanceof Error ? error.message : "Failed to process wholesale order.";
+    const message = error instanceof Error ? error.message : "Failed to process order.";
     return NextResponse.json(
       { error: message },
       { status: 500 }

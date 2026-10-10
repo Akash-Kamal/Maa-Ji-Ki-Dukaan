@@ -181,7 +181,7 @@ export default function AdminCustomerDetailPage() {
     });
     setIsPricingModalOpen(false);
     setEditingPriceId(null);
-    setFeedback("Negotiated wholesale price tier updated.");
+    setFeedback("Negotiated seller price tier updated.");
     setTimeout(() => setFeedback(null), 3000);
   };
 
@@ -267,7 +267,7 @@ export default function AdminCustomerDetailPage() {
             ₹{(customer.outstanding_amount || 0).toLocaleString("en-IN")}
           </span>
           <span className="text-[10px] text-warmGray-500 mt-0.5 block">
-            Unsettled wholesale order balance
+            Unsettled order balance
           </span>
         </Card>
 
@@ -395,8 +395,8 @@ export default function AdminCustomerDetailPage() {
             </div>
 
             {customerPrices.length === 0 ? (
-              <div className="p-6 text-center text-xs text-warmGray-500 bg-cream-50/50 rounded-xl border border-dashed border-warmGray-200">
-                No negotiated rate sheet set for this account. Standard wholesale catalog rates apply.
+              <div className="p-6 text-center text-xs text-warmGray-500 bg-brand-50/30 rounded-xl border border-dashed border-warmGray-200">
+                No negotiated rate sheet set for this account. Standard catalog rates apply.
               </div>
             ) : (
               <Table>
@@ -467,7 +467,7 @@ export default function AdminCustomerDetailPage() {
             </div>
 
             {orders.length === 0 ? (
-              <div className="p-6 text-center text-xs text-warmGray-500 bg-cream-50/50 rounded-xl border border-dashed border-warmGray-200">
+              <div className="p-6 text-center text-xs text-warmGray-500 bg-brand-50/30 rounded-xl border border-dashed border-warmGray-200">
                 No orders placed by this customer yet.
               </div>
             ) : (
@@ -630,7 +630,7 @@ export default function AdminCustomerDetailPage() {
         <Modal
           isOpen={true}
           onClose={() => setIsPricingModalOpen(false)}
-          title={`Set Negotiated Wholesale Rate for ${customer.business_name}`}
+          title={`Set Negotiated Seller Rate for ${customer.business_name}`}
         >
           <form onSubmit={handleSaveNegotiatedPrice} className="space-y-4">
             <div>

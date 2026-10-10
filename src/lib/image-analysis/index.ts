@@ -94,7 +94,7 @@ export function buildProductDraft(
       ...(analysis.piecesPerCase.needsReview
         ? ["Pieces per case requires verification from physical packaging."]
         : []),
-      "Wholesale price per case and initial warehouse stock must be entered by Admin.",
+      "Seller price per case and initial warehouse stock must be entered by Admin.",
     ],
   };
 }

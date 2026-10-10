@@ -51,8 +51,8 @@ export function AdminHeader({ title, subtitle, action }: AdminHeaderProps) {
 
           <button
             type="button"
-            className="p-2 rounded-lg text-charcoal-600 hover:bg-cream-100 transition-colors relative"
-            aria-label="Wholesale Alerts"
+            className="p-2 rounded-lg text-charcoal-600 hover:bg-brand-50 transition-colors relative"
+            aria-label="Operations Alerts"
           >
             <Bell className="w-4 h-4" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-600 rounded-full" />
@@ -61,7 +61,7 @@ export function AdminHeader({ title, subtitle, action }: AdminHeaderProps) {
           <div className="flex items-center gap-2 pl-1 text-charcoal-700">
             <UserCircle className="w-6 h-6 text-charcoal-400" />
             <span className="text-xs font-bold hidden md:inline">
-              Wholesaler Admin
+              Seller Admin
             </span>
           </div>
         </div>

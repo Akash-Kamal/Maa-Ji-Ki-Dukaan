@@ -51,17 +51,17 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
+  // Helper to preserve updated session cookies on redirects
+  const createRedirect = (redirectUrl: URL) => {
+    const redirectResponse = NextResponse.redirect(redirectUrl);
+    supabaseResponse.cookies.getAll().forEach((c) => {
+      redirectResponse.cookies.set(c.name, c.value, c);
+    });
+    return redirectResponse;
+  };
+
   // Protect /admin routes
   if (pathname.startsWith("/admin")) {
-    // Helper to preserve updated session cookies on redirects
-    const createRedirect = (redirectUrl: URL) => {
-      const redirectResponse = NextResponse.redirect(redirectUrl);
-      supabaseResponse.cookies.getAll().forEach((c) => {
-        redirectResponse.cookies.set(c.name, c.value, c);
-      });
-      return redirectResponse;
-    };
-
     if (pathname === "/admin/login") {
       // If already authenticated as an active admin, redirect to /admin dashboard
       if (user) {
@@ -103,8 +103,7 @@ export async function updateSession(request: NextRequest) {
       return createRedirect(url);
     }
 
-    // Role check: ensure the authenticated user has an active admin profile
-    // Use service role key to bypass RLS recursion / token timing issues in middleware
+    // Role check: verify that the authenticated user possesses an active admin profile
     let profile: Pick<Profile, "role" | "is_active"> | null = null;
     try {
       const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -150,7 +149,7 @@ export async function updateSession(request: NextRequest) {
       const url = request.nextUrl.clone();
       url.pathname = "/login";
       url.searchParams.set("redirectTo", pathname);
-      return NextResponse.redirect(url);
+      return createRedirect(url);
     }
   }
 

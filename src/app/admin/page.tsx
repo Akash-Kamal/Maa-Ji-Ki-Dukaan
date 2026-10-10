@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import { AdminHeader } from "@/components/layout/AdminHeader";
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
 import {
   Table,
   TableHead,
@@ -99,7 +98,7 @@ export default function AdminDashboardPage() {
       {/* Top Welcome & Quick Actions */}
       <AdminHeader
         title="Owner Operations Dashboard"
-        subtitle="Live wholesale distribution metrics, case dispatch pipeline, and inventory status."
+        subtitle="Live seller distribution metrics, case dispatch pipeline, and inventory status."
         action={{
           label: "Add Product",
           href: "/admin/products/new",
@@ -114,7 +113,7 @@ export default function AdminDashboardPage() {
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">
-              Centralized Wholesale Distribution: Direct-to-Retailer
+              Centralized Seller Distribution: Direct-to-Retailer
             </h3>
             <p className="text-xs text-warmGray-400 mt-0.5">
               Verified business accounts with commercial credit facilities and whole-case supply dispatch.
@@ -124,29 +123,37 @@ export default function AdminDashboardPage() {
 
         {/* 4 Quick Actions Header Shortcuts */}
         <div className="flex items-center gap-2 flex-wrap">
-          <Link href="/admin/products/new">
-            <Button size="sm" variant="primary" className="text-xs font-bold">
-              <Plus className="w-3.5 h-3.5 mr-1" />
-              Add Product
-            </Button>
+          <Link
+            href="/admin/products/new"
+            prefetch={false}
+            className="inline-flex items-center justify-center font-bold transition-all duration-150 rounded-lg px-3 py-1.5 text-xs gap-1.5 bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800 shadow-sm shadow-brand-600/20"
+          >
+            <Plus className="w-3.5 h-3.5 mr-1" />
+            Add Product
           </Link>
-          <Link href="/admin/customers">
-            <Button size="sm" variant="secondary" className="text-xs font-bold bg-charcoal-800 text-white hover:bg-charcoal-700 border-charcoal-700">
-              <Users className="w-3.5 h-3.5 mr-1" />
-              Add Customer
-            </Button>
+          <Link
+            href="/admin/customers"
+            prefetch={false}
+            className="inline-flex items-center justify-center font-bold transition-all duration-150 rounded-lg px-3 py-1.5 text-xs gap-1.5 bg-charcoal-800 text-white hover:bg-charcoal-700 border border-charcoal-700 shadow-sm"
+          >
+            <Users className="w-3.5 h-3.5 mr-1" />
+            Add Customer
           </Link>
-          <Link href="/admin/orders">
-            <Button size="sm" variant="secondary" className="text-xs font-bold bg-charcoal-800 text-white hover:bg-charcoal-700 border border-charcoal-700">
-              <ClipboardList className="w-3.5 h-3.5 mr-1" />
-              View Orders
-            </Button>
+          <Link
+            href="/admin/orders"
+            prefetch={false}
+            className="inline-flex items-center justify-center font-bold transition-all duration-150 rounded-lg px-3 py-1.5 text-xs gap-1.5 bg-charcoal-800 text-white hover:bg-charcoal-700 border border-charcoal-700 shadow-sm"
+          >
+            <ClipboardList className="w-3.5 h-3.5 mr-1" />
+            View Orders
           </Link>
-          <Link href="/admin/inventory">
-            <Button size="sm" variant="secondary" className="text-xs font-bold bg-charcoal-800 text-white hover:bg-charcoal-700 border border-charcoal-700">
-              <Warehouse className="w-3.5 h-3.5 mr-1" />
-              Update Stock
-            </Button>
+          <Link
+            href="/admin/inventory"
+            prefetch={false}
+            className="inline-flex items-center justify-center font-bold transition-all duration-150 rounded-lg px-3 py-1.5 text-xs gap-1.5 bg-charcoal-800 text-white hover:bg-charcoal-700 border border-charcoal-700 shadow-sm"
+          >
+            <Warehouse className="w-3.5 h-3.5 mr-1" />
+            Update Stock
           </Link>
         </div>
       </div>
@@ -251,7 +258,7 @@ export default function AdminDashboardPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-base font-extrabold text-charcoal-950 flex items-center gap-2">
               <ClipboardList className="w-4 h-4 text-brand-600" />
-              Recent Wholesale Orders
+              Recent Orders
             </h2>
             <Link
               href="/admin/orders"
@@ -326,11 +333,13 @@ export default function AdminDashboardPage() {
                           </span>
                         </TableCell>
                         <TableCell>
-                          <Link href={`/admin/orders/${encodeURIComponent(order.order_number)}`}>
-                            <Button size="sm" variant="ghost" className="h-7 px-2 text-xs">
-                              <Eye className="w-3.5 h-3.5 mr-1" />
-                              View
-                            </Button>
+                          <Link
+                            href={`/admin/orders/${encodeURIComponent(order.order_number)}`}
+                            prefetch={false}
+                            className="inline-flex items-center gap-1 h-7 px-2.5 rounded-md hover:bg-warmGray-100 text-xs font-semibold text-charcoal-700 hover:text-brand-600 transition-colors"
+                          >
+                            <Eye className="w-3.5 h-3.5 mr-1" />
+                            View
                           </Link>
                         </TableCell>
                       </TableRow>

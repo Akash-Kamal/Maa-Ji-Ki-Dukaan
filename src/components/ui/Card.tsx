@@ -14,7 +14,7 @@ export function Card({
 }: CardProps) {
   const variantStyles = {
     default: "bg-white border border-warmGray-200/80 shadow-sm rounded-xl",
-    flat: "bg-cream-100/70 border border-warmGray-200 rounded-xl",
+    flat: "bg-brand-50/60 border border-warmGray-200 rounded-xl",
     elevated: "bg-white border border-warmGray-200/60 shadow-md rounded-xl",
     highlight: "bg-white border-2 border-brand-500/80 shadow-md rounded-xl",
   };

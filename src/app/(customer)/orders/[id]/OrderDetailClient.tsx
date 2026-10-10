@@ -130,7 +130,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
     }
 
     if (addedCount > 0) {
-      setReorderStatus(`Added ${addedCount} wholesale item(s) to cart.`);
+      setReorderStatus(`Added ${addedCount} item(s) to cart.`);
     } else {
       setReorderStatus("Unable to reorder items from this order.");
     }
@@ -151,7 +151,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
     return (
       <div className="max-w-4xl mx-auto py-16 text-center space-y-4">
         <h2 className="text-xl font-bold text-charcoal-900">Order Not Found</h2>
-        <p className="text-xs text-warmGray-500">The wholesale order #{orderIdentifier} could not be located.</p>
+        <p className="text-xs text-warmGray-500">The order #{orderIdentifier} could not be located.</p>
         <Link href="/orders">
           <Button size="sm" variant="primary">Return to Orders</Button>
         </Link>
@@ -197,7 +197,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
             </div>
             <div>
               <span className="text-[11px] font-bold text-brand-400 uppercase tracking-wider block">
-                Wholesale Order Confirmed
+                Order Confirmed
               </span>
               <h1 className="text-2xl font-black text-white tracking-tight">
                 Order #{order.order_number}
@@ -246,7 +246,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
               Purchased Case Lineup ({totalCases} {totalCases === 1 ? "Case" : "Cases"})
             </h2>
           </div>
-          <span className="text-[11px] font-bold text-warmGray-500 bg-cream-100 px-2.5 py-0.5 rounded border border-warmGray-200">
+          <span className="text-[11px] font-bold text-warmGray-500 bg-brand-50 px-2.5 py-0.5 rounded border border-warmGray-200">
             Historical Price Snapshot Protected
           </span>
         </div>
@@ -256,7 +256,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
             <tr>
               <TableHeaderCell>Beverage & Pack Size</TableHeaderCell>
               <TableHeaderCell>Pieces / Case</TableHeaderCell>
-              <TableHeaderCell>Wholesale Price / Case</TableHeaderCell>
+              <TableHeaderCell>Seller Price / Case</TableHeaderCell>
               <TableHeaderCell>Order Quantity</TableHeaderCell>
               <TableHeaderCell>Line Total</TableHeaderCell>
             </tr>
@@ -281,7 +281,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
 
                   <TableCell>
                     {pcs ? (
-                      <span className="text-xs font-semibold text-charcoal-800 bg-cream-100 px-2 py-0.5 rounded border border-warmGray-200">
+                      <span className="text-xs font-semibold text-charcoal-800 bg-brand-50 px-2 py-0.5 rounded border border-warmGray-200">
                         {pcs} pcs / case
                       </span>
                     ) : (
@@ -330,7 +330,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
               <span className="font-semibold text-charcoal-600">Calculated at Billing</span>
             </div>
             <div className="flex justify-between text-warmGray-500">
-              <span>Wholesale Freight / Delivery:</span>
+              <span>Freight / Delivery:</span>
               <span className="font-semibold text-charcoal-600">To be confirmed</span>
             </div>
             <div className="pt-2 border-t border-warmGray-200 flex justify-between items-baseline">
@@ -399,7 +399,7 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
             {order.notes && (
               <div className="pt-1">
                 <span className="text-warmGray-500 block">Dispatch Notes:</span>
-                <p className="italic text-warmGray-700 bg-cream-50 p-2 rounded-lg border border-warmGray-200 mt-0.5">
+                <p className="italic text-warmGray-700 bg-warmGray-50 p-2 rounded-lg border border-warmGray-200 mt-0.5">
                   &ldquo;{order.notes}&rdquo;
                 </p>
               </div>
@@ -408,11 +408,11 @@ export function OrderDetailClient({ orderIdentifier }: OrderDetailClientProps) {
         </Card>
       </div>
 
-      {/* Wholesaler Guarantee Callout */}
-      <div className="p-4 rounded-2xl bg-cream-100/80 border border-warmGray-200 text-xs flex items-center gap-3">
+      {/* Seller Guarantee Callout */}
+      <div className="p-4 rounded-2xl bg-brand-50/70 border border-warmGray-200 text-xs flex items-center gap-3">
         <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
         <p className="text-charcoal-800 leading-relaxed">
-          Historical invoice protection: Case quantities and unit prices recorded at order placement are permanently locked and will never fluctuate regardless of future supplier wholesale tariff updates.
+          Historical invoice protection: Case quantities and unit prices recorded at order placement are permanently locked and will never fluctuate regardless of future supplier tariff updates.
         </p>
       </div>
     </div>

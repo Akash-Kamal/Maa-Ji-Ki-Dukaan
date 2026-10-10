@@ -14,23 +14,23 @@ export function AdminTopNav({ onOpenMobileMenu }: AdminTopNavProps) {
         <button
           type="button"
           onClick={onOpenMobileMenu}
-          className="lg:hidden p-2 rounded-lg text-charcoal-700 hover:bg-cream-100"
+          className="lg:hidden p-2 rounded-lg text-charcoal-700 hover:bg-brand-50"
           aria-label="Open navigation menu"
         >
           <Menu className="w-5 h-5" />
         </button>
 
         <div className="flex items-center gap-2">
-          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-cream-100 text-charcoal-800 border border-warmGray-200">
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-brand-50 text-charcoal-800 border border-warmGray-200">
             <ShieldCheck className="w-3.5 h-3.5 text-brand-600" />
-            Wholesale Operations
+            Seller Operations
           </span>
         </div>
       </div>
 
       <div className="flex items-center gap-3">
         {/* Fast Admin Search Shortcut */}
-        <div className="hidden md:flex items-center gap-2 bg-cream-50/80 border border-warmGray-200 rounded-lg px-3 py-1.5 text-xs text-warmGray-500 w-64">
+        <div className="hidden md:flex items-center gap-2 bg-warmGray-50 border border-warmGray-200 rounded-lg px-3 py-1.5 text-xs text-warmGray-500 w-64">
           <Search className="w-3.5 h-3.5 text-warmGray-400 shrink-0" />
           <input
             type="text"
@@ -42,7 +42,7 @@ export function AdminTopNav({ onOpenMobileMenu }: AdminTopNavProps) {
         {/* Notifications Icon */}
         <button
           type="button"
-          className="relative p-2 rounded-lg text-charcoal-600 hover:bg-cream-100 transition-colors"
+          className="relative p-2 rounded-lg text-charcoal-600 hover:bg-brand-50 transition-colors"
           aria-label="Notifications"
         >
           <Bell className="w-4 h-4" />
@@ -58,7 +58,7 @@ export function AdminTopNav({ onOpenMobileMenu }: AdminTopNavProps) {
           </div>
           <div className="hidden sm:block text-left">
             <span className="text-xs font-bold text-charcoal-950 block leading-tight">
-              Wholesaler Admin
+              Seller Admin
             </span>
             <span className="text-[10px] text-brand-600 font-semibold uppercase tracking-wider block">
               Owner

@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          error: "Please fill in all mandatory wholesale registration fields.",
+          error: "Please fill in all mandatory partner registration fields.",
         },
         { status: 400 }
       );
@@ -138,7 +138,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Wholesale account created successfully.",
+      message: "Partner account created successfully.",
     });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "An unexpected registration error occurred.";

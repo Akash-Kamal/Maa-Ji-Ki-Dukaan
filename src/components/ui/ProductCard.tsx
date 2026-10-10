@@ -80,7 +80,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           )}
 
           {currentVariant.pieces_per_case ? (
-            <span className="text-[11px] font-bold text-charcoal-700 bg-cream-100 px-2 py-0.5 rounded-md border border-warmGray-200">
+            <span className="text-[11px] font-bold text-charcoal-700 bg-brand-50 px-2 py-0.5 rounded-md border border-warmGray-200">
               {currentVariant.pieces_per_case} pcs / case
             </span>
           ) : (
@@ -93,7 +93,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         {/* Product Image / Thumbnail */}
         <Link
           href={`/products/${product.slug}`}
-          className="relative block aspect-[4/3] w-full rounded-xl bg-[#f6fbf2] border border-warmGray-200/60 overflow-hidden mb-3 group-hover:bg-[#edf7e6] transition-colors"
+          className="relative block aspect-[4/3] w-full rounded-xl bg-brand-50/40 border border-warmGray-200/80 overflow-hidden mb-3 group-hover:border-brand-300 transition-colors"
         >
           {(() => {
             const displayImage = resolveBeverageImage(
@@ -112,7 +112,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               <div className="flex h-full w-full flex-col items-center justify-center text-warmGray-400">
                 <Package className="w-10 h-10 stroke-[1.25] text-warmGray-300 mb-1" />
                 <span className="text-[11px] font-medium text-warmGray-400">
-                  {product.brand?.name || "Wholesale Case"}
+                  {product.brand?.name || "Seller Case"}
                 </span>
               </div>
             );
@@ -155,8 +155,8 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                     }}
                     className={`px-2 py-0.5 rounded text-[11px] font-bold transition-all ${
                       isSelected
-                        ? "bg-charcoal-900 text-white shadow-sm"
-                        : "bg-cream-100 text-charcoal-700 hover:bg-cream-200 border border-warmGray-200"
+                        ? "bg-brand-600 text-white shadow-sm"
+                        : "bg-brand-50 text-charcoal-700 hover:bg-brand-100 border border-warmGray-200"
                     }`}
                   >
                     {v.variant_name}
@@ -196,7 +196,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           <div className="mb-3 rounded-lg bg-amber-50/80 p-2 border border-amber-200/80">
             <div className="flex items-center gap-1.5 text-amber-800 text-xs font-bold">
               <ShieldAlert className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-              <span>Rate Awaiting Wholesaler Confirmation</span>
+              <span>Rate Awaiting Seller Confirmation</span>
             </div>
             <p className="text-[10px] text-amber-700/80 mt-0.5">
               Price on request from central desk.

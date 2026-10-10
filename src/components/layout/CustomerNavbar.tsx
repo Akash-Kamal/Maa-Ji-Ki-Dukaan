@@ -47,10 +47,10 @@ export function CustomerNavbar() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-warmGray-200">
-        {/* Top Wholesale Assurance Bar */}
-        <div className="bg-charcoal-900 text-cream-100 text-[11px] py-1 px-4 text-center font-medium flex items-center justify-center gap-2">
+        {/* Top Seller Assurance Bar */}
+        <div className="bg-charcoal-900 text-warmGray-200 text-[11px] py-1 px-4 text-center font-medium flex items-center justify-center gap-2">
           <ShieldCheck className="w-3.5 h-3.5 text-brand-400 shrink-0" />
-          <span>Central Wholesaler Direct Portal — Verified Retailers & Distributors Only</span>
+          <span>Central Seller Direct Portal — Verified Retailers & Distributors Only</span>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +70,7 @@ export function CustomerNavbar() {
                     className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold transition-colors ${
                       active
                         ? "bg-brand-50 text-brand-700"
-                        : "text-charcoal-700 hover:text-charcoal-900 hover:bg-cream-100"
+                        : "text-charcoal-700 hover:text-charcoal-900 hover:bg-brand-50"
                     }`}
                   >
                     <Icon className="w-4 h-4" />
@@ -84,8 +84,8 @@ export function CustomerNavbar() {
             <div className="flex items-center gap-2.5">
               <Link
                 href="/cart"
-                className="relative p-2 rounded-lg text-charcoal-800 hover:bg-cream-100 transition-colors"
-                aria-label="View Wholesale Cart"
+                className="relative p-2 rounded-lg text-charcoal-800 hover:bg-brand-50 transition-colors"
+                aria-label="View Order Cart"
               >
                 <ShoppingBag className="w-5 h-5" />
                 {isHydrated && totalCases > 0 && (
@@ -97,7 +97,7 @@ export function CustomerNavbar() {
 
               <Link
                 href="/login"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-warmGray-300 text-xs font-bold text-charcoal-800 hover:bg-cream-100 transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-warmGray-300 text-xs font-bold text-charcoal-800 hover:bg-brand-50 transition-colors"
               >
                 <User className="w-3.5 h-3.5" />
                 Login
@@ -114,7 +114,7 @@ export function CustomerNavbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 rounded-lg text-charcoal-700 hover:bg-cream-100"
+                className="md:hidden p-2 rounded-lg text-charcoal-700 hover:bg-brand-50"
                 aria-label="Toggle Navigation"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -137,7 +137,7 @@ export function CustomerNavbar() {
                   className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-semibold ${
                     active
                       ? "bg-brand-50 text-brand-700 font-bold"
-                      : "text-charcoal-800 hover:bg-cream-100"
+                      : "text-charcoal-800 hover:bg-brand-50"
                   }`}
                 >
                   <Icon className="w-4 h-4 text-warmGray-500" />
@@ -158,7 +158,7 @@ export function CustomerNavbar() {
         )}
       </header>
 
-      {/* Mobile Bottom Navigation Bar (Sticky for fast wholesale navigation) */}
+      {/* Mobile Bottom Navigation Bar (Sticky for fast ordering navigation) */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-warmGray-200 shadow-lg px-2 py-1 flex items-center justify-around">
         {mobileBottomLinks.map((item) => {
           const Icon = item.icon;

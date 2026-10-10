@@ -195,7 +195,7 @@ export default function CustomerProfilePage() {
             </div>
             <div>
               <span className="text-[11px] font-bold text-warmGray-400 uppercase tracking-wider block">
-                Wholesale Commercial Credit Facility
+                Commercial Trade Credit Facility
               </span>
               <h2 className="text-lg font-black text-white">
                 {profile?.business_name || formData.business_name || "Partner Account"}
@@ -217,7 +217,7 @@ export default function CustomerProfilePage() {
               {creditLimit !== null ? `₹${creditLimit.toLocaleString("en-IN")}` : "₹—"}
             </span>
             <span className="text-[10px] text-warmGray-400">
-              {profile ? "Approved Central Limit" : "Wholesale Standard"}
+              {profile ? "Approved Central Limit" : "Standard Limit"}
             </span>
           </div>
 
@@ -268,7 +268,7 @@ export default function CustomerProfilePage() {
               label="Business / Enterprise Name"
               value={formData.business_name}
               disabled
-              helperText="Contact wholesaler admin to update registered enterprise title."
+              helperText="Contact seller admin to update registered enterprise title."
             />
 
             <Input

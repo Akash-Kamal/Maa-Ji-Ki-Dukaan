@@ -125,7 +125,7 @@ export default function CustomerHomePage() {
         <div className="relative z-10 max-w-2xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600/30 border border-brand-500/40 text-accent-300 text-xs font-bold tracking-wide">
             <Sparkles className="w-3.5 h-3.5 text-accent-400" />
-            Wholesale Ordering Platform
+            Direct Seller Ordering Platform
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
@@ -136,14 +136,14 @@ export default function CustomerHomePage() {
               </>
             ) : (
               <>
-                Wholesale Beverages.{" "}
+                Direct Seller Beverages.{" "}
                 <span className="text-accent-400">Direct From Source.</span>
               </>
             )}
           </h1>
 
           <p className="text-sm sm:text-base text-warmGray-300 font-normal leading-relaxed">
-            Order confirmed wholesale beverage cases directly from central inventory. Every product is sold strictly by the box.
+            Order confirmed beverage cases directly from central seller inventory. Every product is sold strictly by the box.
           </p>
 
           {/* Quick Search Form Inside Hero */}
@@ -184,11 +184,11 @@ export default function CustomerHomePage() {
           )}
         </div>
 
-        {/* Ambient Wholesale Trust Badges Footer */}
+        {/* Ambient Seller Trust Badges Footer */}
         <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 text-xs text-warmGray-300 font-medium">
           <div className="flex items-center gap-2">
             <TrendingDown className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Strict Box / Case Wholesale Pricing</span>
+            <span>Strict Box / Case Seller Pricing</span>
           </div>
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-accent-400 shrink-0" />
@@ -196,7 +196,7 @@ export default function CustomerHomePage() {
           </div>
           <div className="hidden sm:flex items-center gap-2">
             <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
-            <span>Direct Central Wholesaler</span>
+            <span>Direct Central Seller</span>
           </div>
         </div>
       </section>
@@ -229,7 +229,7 @@ export default function CustomerHomePage() {
                 {cat.name}
               </span>
               <span className="text-[10px] text-warmGray-500 uppercase tracking-wider font-semibold">
-                Wholesale Cases
+                Seller Packs
               </span>
             </Link>
           ))}
@@ -271,10 +271,10 @@ export default function CustomerHomePage() {
             <Sparkles className="w-5 h-5 text-brand-600" />
             <div>
               <h2 className="text-lg font-black text-charcoal-950 tracking-tight">
-                Confirmed Wholesale Packs
+                Confirmed Seller Packs
               </h2>
               <p className="text-xs text-warmGray-500 font-medium">
-                Verified wholesale pricing ready for immediate warehouse fulfillment
+                Verified seller pricing ready for immediate warehouse fulfillment
               </p>
             </div>
           </div>
@@ -355,7 +355,7 @@ export default function CustomerHomePage() {
             {recentlyOrderedProducts.map((product) => (
               <div
                 key={product.id}
-                className="p-3 rounded-2xl bg-cream-50 border border-warmGray-200 flex items-center justify-between gap-3"
+                className="p-3 rounded-2xl bg-brand-50/50 border border-warmGray-200 flex items-center justify-between gap-3"
               >
                 <div>
                   <span className="text-xs font-bold text-charcoal-900 block line-clamp-1">

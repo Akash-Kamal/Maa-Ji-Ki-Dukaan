@@ -41,7 +41,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {category.name}
         </h1>
         <p className="text-xs text-warmGray-500 mt-1">
-          Wholesale case inventory available in this beverage category. Selling unit: Case/Box.
+          Direct seller case inventory available in this beverage category. Selling unit: Case/Box.
         </p>
       </div>
 
@@ -55,7 +55,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <EmptyState
           icon={<PackageOpen className="w-6 h-6 text-brand-600" />}
           title={`No products listed under ${category.name} yet`}
-          description="The central wholesaler has established this category for future portfolio expansion. Check other categories for available stock."
+          description="The central seller has established this category for future portfolio expansion. Check other categories for available stock."
           action={
             <Link href="/products">
               <Button size="md" variant="primary">

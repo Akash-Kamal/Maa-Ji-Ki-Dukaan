@@ -132,14 +132,14 @@ export default function AdminCustomersPage() {
       pincode: "110001",
       credit_limit: 50000,
     });
-    setFeedback("New wholesale customer added successfully!");
+    setFeedback("New customer added successfully!");
     setTimeout(() => setFeedback(null), 3000);
   };
 
   return (
     <div className="space-y-6">
       <AdminHeader
-        title="Direct Wholesale Customers"
+        title="Direct Retail Partners"
         subtitle="Manage 20–30 authorized shopkeeper & distributor accounts with customized credit terms."
         action={{
           label: "Add Customer Partner",
@@ -161,7 +161,7 @@ export default function AdminCustomersPage() {
           <span>Active Partner Accounts: <strong>{customers.filter((c) => c.is_active).length}</strong> / 30 Target Capacity</span>
         </div>
         <span className="text-warmGray-400 text-[11px]">
-          Strict 1-to-1 Wholesaler Model — Controlled verified accounts only
+          Strict 1-to-1 Seller Model — Controlled verified accounts only
         </span>
       </div>
 
@@ -300,7 +300,7 @@ export default function AdminCustomersPage() {
         <Modal
           isOpen={true}
           onClose={() => setIsAddModalOpen(false)}
-          title="Add Verified Wholesale Customer"
+          title="Add Verified Customer"
         >
           <form onSubmit={handleCreateCustomer} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">

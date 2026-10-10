@@ -22,7 +22,7 @@ export async function GET(request: Request, { params }: RouteParams) {
 
     if (!user) {
       return NextResponse.json(
-        { error: "Unauthorized: Please sign in to view this wholesale order." },
+        { error: "Unauthorized: Please sign in to view this order." },
         { status: 401 }
       );
     }

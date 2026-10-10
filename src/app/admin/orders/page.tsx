@@ -88,7 +88,7 @@ export default function AdminOrdersPage() {
   if (loading) {
     return (
       <div className="space-y-6">
-        <AdminHeader title="Wholesale Case Orders" subtitle="Loading orders from database..." />
+        <AdminHeader title="Seller Case Orders" subtitle="Loading orders from database..." />
         <div className="flex items-center justify-center py-24">
           <div className="w-10 h-10 border-4 border-brand-600 border-t-transparent rounded-full animate-spin" />
         </div>
@@ -99,7 +99,7 @@ export default function AdminOrdersPage() {
   return (
     <div className="space-y-6">
       <AdminHeader
-        title="Wholesale Case Orders"
+        title="Seller Case Orders"
         subtitle="Manage dispatch pipeline, invoice statuses, and pending retailer orders."
       />
 
@@ -134,7 +134,7 @@ export default function AdminOrdersPage() {
               className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors whitespace-nowrap ${
                 statusFilter === tab.id
                   ? "bg-brand-600 text-white shadow-xs"
-                  : "bg-cream-100 text-charcoal-700 hover:bg-cream-200"
+                  : "bg-brand-50 text-charcoal-700 hover:bg-brand-100 border border-warmGray-200"
               }`}
             >
               {tab.label}
@@ -146,7 +146,7 @@ export default function AdminOrdersPage() {
       {filteredOrders.length === 0 ? (
         <EmptyState
           icon={<ClipboardList className="w-6 h-6 text-brand-600" />}
-          title={search || statusFilter !== "all" ? "No matching orders found" : "No wholesale orders in queue"}
+          title={search || statusFilter !== "all" ? "No matching orders found" : "No orders in queue"}
           description={
             search || statusFilter !== "all"
               ? "Try adjusting your search query or status filter to see other orders."

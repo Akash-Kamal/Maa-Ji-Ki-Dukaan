@@ -128,12 +128,12 @@ export default function CustomerOrdersPage() {
             Order History & Tracking
           </h1>
           <p className="text-xs sm:text-sm text-warmGray-500 font-medium mt-0.5">
-            Confirmed wholesale beverage cases, fulfillment status, and historical snapshots.
+            Confirmed beverage cases, fulfillment status, and historical snapshots.
           </p>
         </div>
         <Link href="/products">
           <Button size="sm" variant="outline" className="flex items-center gap-1.5 self-start">
-            <Package className="w-4 h-4" /> Place New Wholesale Order
+            <Package className="w-4 h-4" /> Place New Order
           </Button>
         </Link>
       </div>
@@ -162,12 +162,12 @@ export default function CustomerOrdersPage() {
       ) : orders.length === 0 ? (
         <EmptyState
           icon={<ClipboardList className="w-8 h-8 text-warmGray-400" />}
-          title="No wholesale orders placed yet"
+          title="No orders placed yet"
           description="Your verified business orders and delivery tracking will appear here once submitted."
           action={
             <Link href="/products">
               <Button size="md" variant="primary">
-                Browse Wholesale Catalog
+                Browse Seller Catalog
               </Button>
             </Link>
           }
@@ -196,7 +196,7 @@ export default function CustomerOrdersPage() {
                         #{order.order_number}
                       </span>
                       <OrderStatusBadge status={order.order_status} />
-                      <span className="text-[11px] font-semibold text-warmGray-500 uppercase tracking-wider bg-cream-100 px-2 py-0.5 rounded-md border border-warmGray-200">
+                      <span className="text-[11px] font-semibold text-warmGray-500 uppercase tracking-wider bg-brand-50 px-2 py-0.5 rounded-md border border-warmGray-200">
                         {order.payment_method.replace(/_/g, " ")}
                       </span>
                     </div>
@@ -210,7 +210,7 @@ export default function CustomerOrdersPage() {
                       <span>
                         Destination:{" "}
                         <strong className="text-charcoal-800">
-                          {order.delivery_address?.business_name || "Wholesale Account"}
+                          {order.delivery_address?.business_name || "Business Account"}
                         </strong>
                         , {order.delivery_address?.city || "New Delhi"}
                       </span>
@@ -218,7 +218,7 @@ export default function CustomerOrdersPage() {
 
                     {/* Snapshot preview */}
                     {order.items && order.items.length > 0 && (
-                      <div className="text-xs text-charcoal-700 bg-cream-50 p-2.5 rounded-xl border border-warmGray-200/80 inline-block">
+                      <div className="text-xs text-charcoal-700 bg-brand-50/50 p-2.5 rounded-xl border border-warmGray-200/80 inline-block">
                         <span className="font-semibold text-warmGray-500">Items: </span>
                         {order.items
                           .slice(0, 3)

@@ -6,7 +6,7 @@ export interface LoadingStateProps {
 }
 
 export function LoadingState({
-  label = "Loading wholesale catalog...",
+  label = "Loading seller catalog...",
   className = "",
 }: LoadingStateProps) {
   return (

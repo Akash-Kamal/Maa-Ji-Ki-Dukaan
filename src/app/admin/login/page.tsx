@@ -3,12 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ShieldCheck, Lock, User, AlertCircle, ArrowRight } from "lucide-react";
-import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { createClient } from "@/lib/supabase/client";
-import type { Profile } from "@/types";
 
 export default function AdminLoginPage() {
   const [adminId, setAdminId] = useState("");
@@ -22,43 +18,23 @@ export default function AdminLoginPage() {
     setErrorMessage("");
 
     try {
-      const emailInput = adminId.trim().toLowerCase();
-      // Support shorthand 'admin' username mapping to admin@maajikidukaan.com
-      const fullEmail = emailInput.includes("@")
-        ? emailInput
-        : emailInput === "admin"
-        ? "admin@maajikidukaan.com"
-        : `${emailInput}@maajikidukaan.com`;
-
-      const supabase = createClient();
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: fullEmail,
-        password: password,
+      const res = await fetch("/api/auth/admin-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: adminId, password }),
       });
 
-      if (error || !data?.user) {
-        setErrorMessage("Invalid Admin ID or password. Access is restricted to central administrators.");
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        setErrorMessage(
+          data.error || "Invalid Admin ID or password. Access is restricted to central administrators."
+        );
         setLoading(false);
         return;
       }
 
-      // Verify the user is an active administrator in profiles
-      const { data: profileData, error: profErr } = await supabase
-        .from("profiles")
-        .select("role, is_active")
-        .eq("auth_user_id", data.user.id)
-        .single();
-
-      const profile = profileData as Pick<Profile, "role" | "is_active"> | null;
-
-      if (profErr || !profile || profile.role !== "admin" || !profile.is_active) {
-        await supabase.auth.signOut();
-        setErrorMessage("Access Denied: This account does not possess central administrator privileges.");
-        setLoading(false);
-        return;
-      }
-
-      // Full navigation guarantees cookies are committed to server requests
+      // Hard navigation ensures browser sends freshly committed HTTP cookies to /admin
       window.location.href = "/admin";
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Authentication error occurred.";
@@ -75,7 +51,7 @@ export default function AdminLoginPage() {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center relative z-10">
         <div className="inline-flex justify-center mb-4">
-          <BrandLogo href="/" size="lg" variant="dark" />
+          <BrandLogo href="/" size="lg" variant="dark" layout="vertical" />
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-charcoal-900 border border-charcoal-800 text-accent-400 text-xs font-bold uppercase tracking-wider mb-2">
           <ShieldCheck className="w-3.5 h-3.5 text-accent-400" />
@@ -85,7 +61,7 @@ export default function AdminLoginPage() {
           Admin Portal Login
         </h2>
         <p className="mt-1 text-xs text-warmGray-400">
-          Enter your authorized credentials to access wholesale operations.
+          Enter your authorized credentials to access seller operations.
         </p>
       </div>
 
@@ -152,7 +128,7 @@ export default function AdminLoginPage() {
         </div>
 
         <p className="mt-6 text-center text-xs text-warmGray-500">
-          Wholesale customer?{" "}
+          Retail partner?{" "}
           <Link href="/login" className="text-brand-400 hover:text-brand-300 font-semibold underline">
             Go to Retailer Sign In
           </Link>

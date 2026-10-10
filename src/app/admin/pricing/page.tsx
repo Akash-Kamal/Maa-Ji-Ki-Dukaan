@@ -160,7 +160,7 @@ export default function AdminPricingPage() {
   return (
     <div className="space-y-6">
       <AdminHeader
-        title="Wholesale Pricing Matrix"
+        title="Seller Pricing Matrix"
         subtitle="Configure volume tier slabs and personalized rate sheets per retail account."
       />
 
@@ -239,7 +239,7 @@ export default function AdminPricingPage() {
                 <TableHeaderCell>Beverage Product</TableHeaderCell>
                 <TableHeaderCell>Standard Case Rate</TableHeaderCell>
                 <TableHeaderCell>Minimum Case Requirement</TableHeaderCell>
-                <TableHeaderCell>Tier Wholesale Price</TableHeaderCell>
+                <TableHeaderCell>Tier Price / Case</TableHeaderCell>
                 <TableHeaderCell>Savings per Case</TableHeaderCell>
                 <TableHeaderCell align="right">Actions</TableHeaderCell>
               </tr>
@@ -489,7 +489,7 @@ export default function AdminPricingPage() {
               />
 
               <Input
-                label="Wholesale Rate / Case (₹)"
+                label="Seller Rate / Case (₹)"
                 type="number"
                 min={1}
                 placeholder="e.g. 2950"

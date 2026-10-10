@@ -53,7 +53,7 @@ export function QuantitySelector({
         type="button"
         onClick={handleDecrement}
         disabled={disabled || value <= min}
-        className={`flex items-center justify-center text-charcoal-700 hover:bg-cream-100 active:bg-cream-200 disabled:opacity-30 disabled:pointer-events-none transition-colors ${
+        className={`flex items-center justify-center text-charcoal-700 hover:bg-brand-50 active:bg-brand-100 disabled:opacity-30 disabled:pointer-events-none transition-colors ${
           isSm ? "w-7 h-7" : "w-9 h-9"
         }`}
         aria-label="Decrease quantity"
@@ -84,7 +84,7 @@ export function QuantitySelector({
         type="button"
         onClick={handleIncrement}
         disabled={disabled || value >= max}
-        className={`flex items-center justify-center text-charcoal-700 hover:bg-cream-100 active:bg-cream-200 disabled:opacity-30 disabled:pointer-events-none transition-colors ${
+        className={`flex items-center justify-center text-charcoal-700 hover:bg-brand-50 active:bg-brand-100 disabled:opacity-30 disabled:pointer-events-none transition-colors ${
           isSm ? "w-7 h-7" : "w-9 h-9"
         }`}
         aria-label="Increase quantity"

@@ -150,7 +150,7 @@ export default function AdminInventoryPage() {
     <div className="space-y-6">
       <AdminHeader
         title="Warehouse Inventory & Stock Adjustments"
-        subtitle="Wholesale primary unit: Strictly CASES / BOXES. Tracks stock reservations and audit movements."
+        subtitle="Primary ordering unit: Strictly CASES / BOXES. Tracks stock reservations and audit movements."
       />
 
       {feedback && (
@@ -233,7 +233,7 @@ export default function AdminInventoryPage() {
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
               statusFilter === "all"
                 ? "bg-charcoal-900 text-white"
-                : "bg-white border border-warmGray-300 text-charcoal-700 hover:bg-cream-100"
+                : "bg-white border border-warmGray-300 text-charcoal-700 hover:bg-brand-50"
             }`}
           >
             All ({inventoryRows.length})
@@ -243,7 +243,7 @@ export default function AdminInventoryPage() {
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
               statusFilter === "low"
                 ? "bg-amber-600 text-white"
-                : "bg-white border border-warmGray-300 text-charcoal-700 hover:bg-cream-100"
+                : "bg-white border border-warmGray-300 text-charcoal-700 hover:bg-brand-50"
             }`}
           >
             Low Stock
@@ -253,7 +253,7 @@ export default function AdminInventoryPage() {
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
               statusFilter === "out"
                 ? "bg-red-600 text-white"
-                : "bg-white border border-warmGray-300 text-charcoal-700 hover:bg-cream-100"
+                : "bg-white border border-warmGray-300 text-charcoal-700 hover:bg-brand-50"
             }`}
           >
             Out of Stock
@@ -293,7 +293,7 @@ export default function AdminInventoryPage() {
                 </TableCell>
 
                 <TableCell>
-                  <span className="font-extrabold text-xs text-charcoal-800 bg-cream-100 px-2 py-0.5 rounded border border-warmGray-200">
+                  <span className="font-extrabold text-xs text-charcoal-800 bg-brand-50 px-2 py-0.5 rounded border border-warmGray-200">
                     {item.variantName}
                   </span>
                 </TableCell>
@@ -493,7 +493,7 @@ export default function AdminInventoryPage() {
           title={`Adjust Inventory: ${adjustingItem.productName} (${adjustingItem.variantName})`}
         >
           <form onSubmit={handleCustomAdjustSubmit} className="space-y-4">
-            <div className="p-3 bg-cream-50 rounded-lg text-xs flex justify-between items-center border border-warmGray-200">
+            <div className="p-3 bg-brand-50/50 rounded-lg text-xs flex justify-between items-center border border-warmGray-200">
               <span className="font-bold text-charcoal-700">Current Stock on Hand:</span>
               <span className="font-black text-charcoal-950 text-sm">
                 {adjustingItem.currentStock} Cases

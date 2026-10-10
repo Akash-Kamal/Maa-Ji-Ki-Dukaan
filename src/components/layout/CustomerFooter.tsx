@@ -5,7 +5,7 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 
 export function CustomerFooter() {
   return (
-    <footer className="bg-charcoal-900 text-cream-100 border-t border-charcoal-800 mt-20">
+    <footer className="bg-charcoal-900 text-warmGray-300 border-t border-charcoal-800 mt-20">
       {/* Trust Highlights */}
       <div className="border-b border-charcoal-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -58,7 +58,7 @@ export function CustomerFooter() {
               </div>
               <div>
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                  Dedicated Wholesaler Desk
+                  Dedicated Seller Desk
                 </h4>
                 <p className="text-xs text-warmGray-400 mt-0.5">
                   Quick support for high-volume orders
@@ -75,13 +75,13 @@ export function CustomerFooter() {
           <div>
             <BrandLogo size="md" variant="dark" />
             <p className="text-xs text-warmGray-400 mt-2 max-w-sm">
-              Wholesale Shopping. Made Simple. Direct B2B beverage distribution for retailers, vendors, and distributors.
+              Direct Seller Ordering. Made Simple. Direct B2B beverage distribution for retailers, vendors, and distributors.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-6 text-xs text-warmGray-400 font-medium">
             <Link href="/products" className="hover:text-white transition-colors">
-              Wholesale Catalog
+              Seller Catalog
             </Link>
             <Link href="/orders" className="hover:text-white transition-colors">
               Order Tracking
@@ -90,7 +90,7 @@ export function CustomerFooter() {
               Quick Reorder
             </Link>
             <Link href="/admin" className="text-brand-400 hover:text-brand-300 transition-colors">
-              Wholesaler Admin
+              Seller Admin
             </Link>
           </div>
         </div>

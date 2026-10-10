@@ -92,7 +92,7 @@ export default function AdminOrderDetailPage() {
       <div className="space-y-6 max-w-4xl mx-auto py-24 text-center">
         <div className="w-10 h-10 border-4 border-brand-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
         <h2 className="text-base font-bold text-charcoal-800">Loading Order #{orderId}...</h2>
-        <p className="text-xs text-warmGray-500">Retrieving wholesale distribution details from PostgreSQL.</p>
+        <p className="text-xs text-warmGray-500">Retrieving seller distribution details from PostgreSQL.</p>
       </div>
     );
   }
@@ -101,9 +101,9 @@ export default function AdminOrderDetailPage() {
     return (
       <div className="space-y-6 max-w-4xl mx-auto py-12 text-center">
         <Package className="w-12 h-12 text-warmGray-400 mx-auto mb-3" />
-        <h2 className="text-xl font-bold text-charcoal-900">Wholesale Order Not Found</h2>
+        <h2 className="text-xl font-bold text-charcoal-900">Order Not Found</h2>
         <p className="text-xs text-warmGray-500">
-          The requested order #{orderId} could not be found in active wholesale records.
+          The requested order #{orderId} could not be found in active records.
         </p>
         <Link href="/admin/orders">
           <Button variant="primary" size="sm" className="mt-4 text-xs font-bold">
@@ -233,7 +233,7 @@ export default function AdminOrderDetailPage() {
                 onClick={() =>
                   setStatusModal({
                     targetStatus: "confirmed",
-                    title: "Confirm Wholesale Order",
+                    title: "Confirm Order",
                     description: `Confirm Order #${order.order_number}? This will reserve ${totalCases} cases in warehouse stock.`,
                   })
                 }
@@ -269,7 +269,7 @@ export default function AdminOrderDetailPage() {
                 onClick={() =>
                   setStatusModal({
                     targetStatus: "dispatched",
-                    title: "Dispatch Wholesale Order",
+                    title: "Dispatch Order",
                     description: `Dispatch Order #${order.order_number}? This will finalize warehouse physical stock deduction for ${totalCases} cases.`,
                   })
                 }
@@ -432,7 +432,7 @@ export default function AdminOrderDetailPage() {
                   Business Name
                 </span>
                 <span className="font-bold text-charcoal-900 text-sm">
-                  {order.delivery_address?.business_name || order.customer?.business_name || "Wholesale Partner"}
+                  {order.delivery_address?.business_name || order.customer?.business_name || "Retail Partner"}
                 </span>
               </div>
 

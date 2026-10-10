@@ -47,10 +47,10 @@ export default function CartPage() {
         <div className="flex items-center justify-between border-b border-warmGray-200 pb-4">
           <div>
             <h1 className="text-2xl font-black text-charcoal-950 tracking-tight">
-              Wholesale Cart
+              Seller Order Cart
             </h1>
             <p className="text-xs text-warmGray-500 mt-0.5">
-              Wholesale case orders prepared for central dispatch.
+              Seller case orders prepared for central dispatch.
             </p>
           </div>
           <Link
@@ -63,12 +63,12 @@ export default function CartPage() {
 
         <EmptyState
           icon={<ShoppingBag className="w-8 h-8 text-brand-600" />}
-          title="Your wholesale cart is empty"
-          description="Browse beverages in the confirmed wholesale catalog and order by case for central dispatch."
+          title="Your order cart is empty"
+          description="Browse beverages in the confirmed seller catalog and order by case for central dispatch."
           action={
             <Link href="/products">
               <Button size="md" variant="primary" className="font-bold shadow-sm">
-                Browse Wholesale Catalog
+                Browse Seller Catalog
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
@@ -85,7 +85,7 @@ export default function CartPage() {
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-black text-charcoal-950 tracking-tight">
-              Wholesale Case Cart
+              Seller Case Cart
             </h1>
             <span className="text-xs font-extrabold bg-brand-50 text-brand-700 px-2.5 py-0.5 rounded-full border border-brand-200">
               {totalCases} {totalCases === 1 ? "Case" : "Cases"}
@@ -130,7 +130,7 @@ export default function CartPage() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   {/* Left: Thumbnail & Details */}
                   <div className="flex items-center gap-3.5 flex-1 min-w-0">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl bg-cream-50 border border-warmGray-200 p-2 flex items-center justify-center overflow-hidden">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl bg-brand-50/40 border border-warmGray-200 p-2 flex items-center justify-center overflow-hidden">
                       {(() => {
                         const lineImage = resolveBeverageImage(
                           line.product.slug,
@@ -177,7 +177,7 @@ export default function CartPage() {
 
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-warmGray-500 mt-1 font-medium">
                         {line.piecesPerCase && (
-                          <span className="text-charcoal-700 font-semibold bg-cream-100 px-1.5 py-0.5 rounded border border-warmGray-200 text-[11px]">
+                          <span className="text-charcoal-700 font-semibold bg-brand-50 px-1.5 py-0.5 rounded border border-warmGray-200 text-[11px]">
                             {line.piecesPerCase} pcs / case
                           </span>
                         )}
@@ -216,7 +216,7 @@ export default function CartPage() {
                       <button
                         type="button"
                         onClick={() => removeItem(line.variantId)}
-                        className="p-1.5 text-warmGray-400 hover:text-red-600 rounded-lg hover:bg-cream-100 transition-colors"
+                        className="p-1.5 text-warmGray-400 hover:text-red-600 rounded-lg hover:bg-brand-50 transition-colors"
                         title="Remove item"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -244,11 +244,11 @@ export default function CartPage() {
             );
           })}
 
-          {/* Wholesale Dispatch Assurance Banner */}
-          <div className="p-3.5 rounded-xl bg-cream-100/70 border border-warmGray-200 text-charcoal-800 text-xs flex items-center gap-2.5">
+          {/* Seller Dispatch Assurance Banner */}
+          <div className="p-3.5 rounded-xl bg-brand-50/70 border border-warmGray-200 text-charcoal-800 text-xs flex items-center gap-2.5">
             <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
             <span className="leading-relaxed">
-              Wholesale orders are packed and dispatched in original factory cases. All pricing locked upon central approval.
+              Seller orders are packed and dispatched in original factory cases. All pricing locked upon central approval.
             </span>
           </div>
         </div>
@@ -257,12 +257,12 @@ export default function CartPage() {
         <div className="space-y-4">
           <Card variant="default" padding="lg" className="sticky top-20 border-warmGray-200 space-y-4">
             <h2 className="text-base font-extrabold text-charcoal-950 border-b border-warmGray-100 pb-3">
-              Wholesale Order Summary
+              Order Summary
             </h2>
 
             <div className="space-y-2.5 text-xs">
               <div className="flex justify-between text-charcoal-700">
-                <span>Total Wholesale Cases:</span>
+                <span>Total Cases:</span>
                 <span className="font-extrabold text-charcoal-950 text-sm">
                   {totalCases} {totalCases === 1 ? "Case" : "Cases"}
                 </span>
@@ -281,7 +281,7 @@ export default function CartPage() {
               </div>
 
               <div className="flex justify-between text-charcoal-500">
-                <span>Wholesale Freight / Delivery:</span>
+                <span>Freight / Delivery:</span>
                 <span className="font-semibold text-charcoal-600">To be confirmed</span>
               </div>
             </div>
@@ -302,13 +302,13 @@ export default function CartPage() {
 
             <Link href="/checkout" className="block pt-2">
               <Button size="lg" variant="primary" className="w-full font-bold shadow-md">
-                Proceed to Wholesale Checkout
+                Proceed to Checkout
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </Link>
 
             <p className="text-[11px] text-warmGray-500 text-center leading-normal">
-              Final wholesale invoice will be confirmed by central dispatch before vehicle leaves warehouse.
+              Final seller invoice will be confirmed by central dispatch before vehicle leaves warehouse.
             </p>
           </Card>
         </div>
