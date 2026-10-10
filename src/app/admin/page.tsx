@@ -360,6 +360,7 @@ export default function AdminDashboardPage() {
             </h2>
             <Link
               href="/admin/inventory"
+              prefetch={false}
               className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1"
             >
               Manage Inventory <ArrowRight className="w-3.5 h-3.5" />
@@ -392,7 +393,7 @@ export default function AdminDashboardPage() {
                       <span className="font-black text-amber-700 text-xs block">
                         {variant.stockCases} Cases
                       </span>
-                      <Link href="/admin/inventory">
+                      <Link href="/admin/inventory" prefetch={false}>
                         <span className="text-[10px] font-bold text-brand-600 hover:underline">
                           + Stock
                         </span>

@@ -105,7 +105,7 @@ export default function AdminOrderDetailPage() {
         <p className="text-xs text-warmGray-500">
           The requested order #{orderId} could not be found in active records.
         </p>
-        <Link href="/admin/orders">
+        <Link href="/admin/orders" prefetch={false}>
           <Button variant="primary" size="sm" className="mt-4 text-xs font-bold">
             Back to Orders Queue
           </Button>
@@ -158,6 +158,7 @@ export default function AdminOrderDetailPage() {
         <div>
           <Link
             href="/admin/orders"
+            prefetch={false}
             className="text-xs font-bold text-brand-600 hover:text-brand-700 inline-flex items-center gap-1 mb-2"
           >
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Orders Queue

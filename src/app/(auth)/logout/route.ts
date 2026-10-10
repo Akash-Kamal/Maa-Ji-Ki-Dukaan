@@ -13,8 +13,13 @@ export async function GET(request: Request) {
     // Ignore signOut errors
   }
 
-  // Clear wholesale session cookie
+  // Clear session cookies
   response.cookies.set("mjd_session", "", {
+    path: "/",
+    expires: new Date(0),
+    maxAge: 0,
+  });
+  response.cookies.set("mjd_admin_session", "", {
     path: "/",
     expires: new Date(0),
     maxAge: 0,

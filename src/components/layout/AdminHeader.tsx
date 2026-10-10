@@ -33,7 +33,7 @@ export function AdminHeader({ title, subtitle, action }: AdminHeaderProps) {
         <div className="flex items-center gap-3">
           {action && (
             action.href ? (
-              <Link href={action.href}>
+              <Link href={action.href} prefetch={false}>
                 <Button size="sm" variant="primary" className="text-xs">
                   <Plus className="w-3.5 h-3.5" />
                   {action.label}

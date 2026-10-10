@@ -91,7 +91,7 @@ export default function AdminEditProductPage() {
         <p className="text-xs text-warmGray-500">
           The requested product ID &quot;{productId}&quot; does not exist in the active catalog.
         </p>
-        <Link href="/admin/products">
+        <Link href="/admin/products" prefetch={false}>
           <Button variant="outline" size="sm" className="mt-4">
             <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
             Back to Products
@@ -241,6 +241,7 @@ export default function AdminEditProductPage() {
       <div>
         <Link
           href="/admin/products"
+          prefetch={false}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-warmGray-500 hover:text-charcoal-900 transition-colors mb-3"
         >
           <ArrowLeft className="w-4 h-4" />

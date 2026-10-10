@@ -306,6 +306,7 @@ export default function AdminNewProductPage() {
       <div className="flex items-center gap-2">
         <Link
           href="/admin/products"
+          prefetch={false}
           className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Products List

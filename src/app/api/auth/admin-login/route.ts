@@ -54,7 +54,18 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json({
+    // Ensure user has app_metadata role = admin for instant JWT verification in middleware
+    try {
+      if (authData.user.app_metadata?.role !== "admin") {
+        await adminDb.auth.admin.updateUserById(authData.user.id, {
+          app_metadata: { ...authData.user.app_metadata, role: "admin", is_admin: true },
+        });
+      }
+    } catch (metaErr) {
+      console.warn("[Admin Login] Could not update app_metadata:", metaErr);
+    }
+
+    const response = NextResponse.json({
       success: true,
       user: {
         id: authData.user.id,
@@ -62,6 +73,17 @@ export async function POST(request: Request) {
         role: profile.role,
       },
     });
+
+    // Set dedicated HTTP-only admin session cookie
+    response.cookies.set("mjd_admin_session", authData.user.id, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+    });
+
+    return response;
   } catch (err: unknown) {
     console.error("[Admin Login Server Action Error]:", err);
     const message = err instanceof Error ? err.message : "Internal authentication error.";
