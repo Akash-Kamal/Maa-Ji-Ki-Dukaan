@@ -316,7 +316,7 @@ export function CustomerNavbar() {
       {/* Floating WhatsApp Action Button (ROS Retail Style) */}
       <aside aria-label="WhatsApp Contact Desk">
         <a
-          href="https://wa.me/918383092211?text=Hello%20Maa%20Ji%20Ki%20Dukaan,%20I%20want%20to%20inquire%20about%20wholesale%20beverage%20cases"
+          href="https://wa.me/918383092211?text=Namaste%20Maa%20Ji,%20%20I%20want%20to%20inquire%20about%20wholesale%20beverage%20cases"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with Wholesale Desk on WhatsApp"
