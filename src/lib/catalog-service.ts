@@ -6,6 +6,7 @@
 import { createClient as createBrowserClient } from "@/lib/supabase/client";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { SEED_PRODUCTS, SEED_CATEGORIES, SEED_BRANDS } from "@/lib/catalog-data";
 import type {
   Product,
   ProductVariant,
@@ -15,6 +16,17 @@ import type {
   CustomerPrice,
   BusinessSettings,
 } from "@/types";
+
+const DB_TIMEOUT_MS = 3500;
+
+function withTimeout<T = any>(promise: Promise<T> | any, ms: number = DB_TIMEOUT_MS): Promise<T> {
+  return Promise.race([
+    Promise.resolve(promise) as Promise<T>,
+    new Promise<T>((_, reject) =>
+      setTimeout(() => reject(new Error(`Database query timed out after ${ms}ms`)), ms)
+    ),
+  ]);
+}
 
 /**
  * Transforms raw Supabase product rows into full canonical Product entities
@@ -77,16 +89,16 @@ export async function getDbProducts(includeInactive = false): Promise<Product[]>
       query = query.eq("is_active", true);
     }
 
-    const { data, error } = await query;
+    const { data, error } = await withTimeout(query as any);
     if (error) {
-      console.error("Database query error in getDbProducts:", error);
-      throw error;
+      console.warn("Database query error in getDbProducts, falling back to seed data:", error);
+      return SEED_PRODUCTS.filter((p) => (includeInactive ? true : p.is_active));
     }
 
     return (data || []).map(transformProduct);
   } catch (err) {
-    console.error("Failed to load products from database:", err);
-    throw err;
+    console.warn("Failed to load products from database, falling back to seed data:", err);
+    return SEED_PRODUCTS.filter((p) => (includeInactive ? true : p.is_active));
   }
 }
 
@@ -96,23 +108,27 @@ export async function getDbProducts(includeInactive = false): Promise<Product[]>
 export async function getDbProductBySlug(slug: string): Promise<Product | null> {
   try {
     const supabase = await createServerClient();
-    const { data, error } = await supabase
-      .from("products")
-      .select(`
-        *,
-        brand:brands(*),
-        category:categories(*),
-        variants:product_variants(*),
-        bulk_prices(*)
-      `)
-      .eq("slug", slug)
-      .single();
+    const { data, error } = await withTimeout(
+      supabase
+        .from("products")
+        .select(`
+          *,
+          brand:brands(*),
+          category:categories(*),
+          variants:product_variants(*),
+          bulk_prices(*)
+        `)
+        .eq("slug", slug)
+        .single() as any
+    );
 
-    if (error || !data) return null;
+    if (error || !data) {
+      return SEED_PRODUCTS.find((p) => p.slug === slug) || null;
+    }
     return transformProduct(data);
   } catch (err) {
-    console.error(`Failed to load product '${slug}' from database:`, err);
-    return null;
+    console.warn(`Failed to load product '${slug}' from database, falling back to seed data:`, err);
+    return SEED_PRODUCTS.find((p) => p.slug === slug) || null;
   }
 }
 
@@ -122,17 +138,22 @@ export async function getDbProductBySlug(slug: string): Promise<Product | null> 
 export async function getDbCategories(): Promise<Category[]> {
   try {
     const supabase = await createServerClient();
-    const { data, error } = await supabase
-      .from("categories")
-      .select("*")
-      .eq("is_active", true)
-      .order("sort_order", { ascending: true });
+    const { data, error } = await withTimeout(
+      supabase
+        .from("categories")
+        .select("*")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true }) as any
+    );
 
-    if (error) throw error;
+    if (error) {
+      console.warn("Database error in getDbCategories, falling back to seed data:", error);
+      return SEED_CATEGORIES.filter((c) => c.is_active);
+    }
     return (data as Category[]) || [];
   } catch (err) {
-    console.error("Failed to load categories from database:", err);
-    throw err;
+    console.warn("Failed to load categories from database, falling back to seed data:", err);
+    return SEED_CATEGORIES.filter((c) => c.is_active);
   }
 }
 
@@ -142,17 +163,21 @@ export async function getDbCategories(): Promise<Category[]> {
 export async function getDbCategoryBySlug(slug: string): Promise<Category | null> {
   try {
     const supabase = await createServerClient();
-    const { data, error } = await supabase
-      .from("categories")
-      .select("*")
-      .eq("slug", slug)
-      .single();
+    const { data, error } = await withTimeout(
+      supabase
+        .from("categories")
+        .select("*")
+        .eq("slug", slug)
+        .single() as any
+    );
 
-    if (error || !data) return null;
+    if (error || !data) {
+      return SEED_CATEGORIES.find((c) => c.slug === slug) || null;
+    }
     return data as Category;
   } catch (err) {
-    console.error(`Failed to load category '${slug}' from database:`, err);
-    return null;
+    console.warn(`Failed to load category '${slug}' from database, falling back to seed data:`, err);
+    return SEED_CATEGORIES.find((c) => c.slug === slug) || null;
   }
 }
 
@@ -162,17 +187,22 @@ export async function getDbCategoryBySlug(slug: string): Promise<Category | null
 export async function getDbBrands(): Promise<Brand[]> {
   try {
     const supabase = await createServerClient();
-    const { data, error } = await supabase
-      .from("brands")
-      .select("*")
-      .eq("is_active", true)
-      .order("name", { ascending: true });
+    const { data, error } = await withTimeout(
+      supabase
+        .from("brands")
+        .select("*")
+        .eq("is_active", true)
+        .order("name", { ascending: true }) as any
+    );
 
-    if (error) throw error;
+    if (error) {
+      console.warn("Database error in getDbBrands, falling back to seed data:", error);
+      return SEED_BRANDS.filter((b) => b.is_active);
+    }
     return (data as Brand[]) || [];
   } catch (err) {
-    console.error("Failed to load brands from database:", err);
-    throw err;
+    console.warn("Failed to load brands from database, falling back to seed data:", err);
+    return SEED_BRANDS.filter((b) => b.is_active);
   }
 }
 
@@ -184,41 +214,50 @@ export async function fetchLiveCatalog(): Promise<{
   categories: Category[];
   brands: Brand[];
 }> {
-  const supabase = createBrowserClient();
+  try {
+    const supabase = createBrowserClient();
 
-  const [productsRes, categoriesRes, brandsRes] = await Promise.all([
-    supabase
-      .from("products")
-      .select(`
-        *,
-        brand:brands(*),
-        category:categories(*),
-        variants:product_variants(*),
-        bulk_prices(*)
-      `)
-      .eq("is_active", true)
-      .order("name"),
-    supabase
-      .from("categories")
-      .select("*")
-      .eq("is_active", true)
-      .order("sort_order", { ascending: true }),
-    supabase
-      .from("brands")
-      .select("*")
-      .eq("is_active", true)
-      .order("name", { ascending: true }),
-  ]);
+    const [productsRes, categoriesRes, brandsRes] = await Promise.all([
+      supabase
+        .from("products")
+        .select(`
+          *,
+          brand:brands(*),
+          category:categories(*),
+          variants:product_variants(*),
+          bulk_prices(*)
+        `)
+        .eq("is_active", true)
+        .order("name"),
+      supabase
+        .from("categories")
+        .select("*")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true }),
+      supabase
+        .from("brands")
+        .select("*")
+        .eq("is_active", true)
+        .order("name", { ascending: true }),
+    ]);
 
-  if (productsRes.error) throw productsRes.error;
-  if (categoriesRes.error) throw categoriesRes.error;
-  if (brandsRes.error) throw brandsRes.error;
+    if (productsRes.error) throw productsRes.error;
+    if (categoriesRes.error) throw categoriesRes.error;
+    if (brandsRes.error) throw brandsRes.error;
 
-  return {
-    products: (productsRes.data || []).map(transformProduct),
-    categories: (categoriesRes.data || []) as Category[],
-    brands: (brandsRes.data || []) as Brand[],
-  };
+    return {
+      products: (productsRes.data || []).map(transformProduct),
+      categories: (categoriesRes.data || []) as Category[],
+      brands: (brandsRes.data || []) as Brand[],
+    };
+  } catch (err) {
+    console.warn("Failed to fetch live catalog from browser, falling back to seed data:", err);
+    return {
+      products: SEED_PRODUCTS.filter((p) => p.is_active),
+      categories: SEED_CATEGORIES.filter((c) => c.is_active),
+      brands: SEED_BRANDS.filter((b) => b.is_active),
+    };
+  }
 }
 
 /**

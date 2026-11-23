@@ -734,7 +734,7 @@ export async function POST(request: Request) {
             id: "default",
             business_name: settings.business_name || "Maa Ji Ki Dukaan",
             tagline: settings.tagline || "Direct Seller Ordering. Made Simple.",
-            contact_phone: settings.contact_phone || "+91 98112 34567",
+            contact_phone: settings.contact_phone || "+91 83830 92211",
             email: settings.email || "orders@maajikidukaan.com",
             address: settings.address || "Plot 12, Main Market, Sector 7, New Delhi, 110075",
             gstin: settings.gstin || "07AAAAA0000A1Z5",

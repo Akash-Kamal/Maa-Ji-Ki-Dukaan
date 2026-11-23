@@ -498,7 +498,7 @@ export function getAdminSettings(): BusinessSettings {
     id: "default",
     business_name: "Maa Ji Ki Dukaan",
     tagline: "Direct Seller Ordering. Made Simple.",
-    contact_phone: "+91 98112 34567",
+    contact_phone: "+91 83830 92211",
     email: "orders@maajikidukaan.com",
     address: "Plot 12, Main Market, Sector 7, New Delhi, 110075",
     gstin: "07AAAAA0000A1Z5",

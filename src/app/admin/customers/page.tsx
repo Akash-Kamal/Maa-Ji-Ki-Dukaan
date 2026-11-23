@@ -327,7 +327,7 @@ export default function AdminCustomersPage() {
             <div className="grid grid-cols-2 gap-3">
               <Input
                 label="Contact Phone"
-                placeholder="e.g. 9811234567"
+                placeholder="e.g. 8383092211"
                 value={newCustomerForm.phone}
                 onChange={(e) =>
                   setNewCustomerForm({ ...newCustomerForm, phone: e.target.value })

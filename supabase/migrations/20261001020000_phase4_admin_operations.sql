@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS public.business_settings (
     id TEXT PRIMARY KEY DEFAULT 'default',
     business_name TEXT NOT NULL DEFAULT 'Maa Ji Ki Dukaan',
     tagline TEXT NOT NULL DEFAULT 'Wholesale Shopping. Made Simple.',
-    contact_phone TEXT NOT NULL DEFAULT '+91 98112 34567',
+    contact_phone TEXT NOT NULL DEFAULT '+91 83830 92211',
     email TEXT NOT NULL DEFAULT 'wholesale@maajikidukaan.com',
     address TEXT NOT NULL DEFAULT 'Plot 12, Main Market, Sector 7, New Delhi, 110075',
     gstin TEXT DEFAULT '07AAAAA0000A1Z5',
@@ -55,7 +55,7 @@ VALUES (
     'default',
     'Maa Ji Ki Dukaan',
     'Wholesale Shopping. Made Simple.',
-    '+91 98112 34567',
+    '+91 83830 92211',
     'wholesale@maajikidukaan.com',
     'Plot 12, Main Market, Sector 7, New Delhi, 110075',
     '07AAAAA0000A1Z5'

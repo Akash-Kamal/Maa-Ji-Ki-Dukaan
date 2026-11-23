@@ -145,7 +145,7 @@ export default function LoginPage() {
               </label>
 
               <a
-                href="tel:+919811234567"
+                href="tel:+918383092211"
                 className="text-brand-700 hover:text-brand-800 font-semibold transition-colors"
                 title="Call partner support for password reset"
               >

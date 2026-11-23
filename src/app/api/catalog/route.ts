@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { SEED_PRODUCTS, SEED_CATEGORIES, SEED_BRANDS } from "@/lib/catalog-data";
 
 export async function GET(request: Request) {
   try {
     const supabase = await createClient();
 
-    // Parallel fetch from database
-    const [productsRes, categoriesRes, brandsRes, settingsRes] = await Promise.all([
+    // Parallel fetch from database with timeout
+    const fetchPromise = Promise.all([
       supabase
         .from("products")
         .select(`
@@ -33,6 +34,15 @@ export async function GET(request: Request) {
         .select("*")
         .eq("id", "default")
         .single(),
+    ]);
+
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error("Supabase query timed out after 4000ms")), 4000)
+    );
+
+    const [productsRes, categoriesRes, brandsRes, settingsRes] = await Promise.race([
+      fetchPromise,
+      timeoutPromise,
     ]);
 
     if (productsRes.error) throw productsRes.error;
@@ -114,10 +124,15 @@ export async function GET(request: Request) {
       customerPrices,
     });
   } catch (error: any) {
-    console.error("Failed to query catalog from database:", error);
-    return NextResponse.json(
-      { error: "Database catalog query failed: " + (error.message || String(error)) },
-      { status: 500 }
-    );
+    console.warn("Database catalog query failed, serving fallback seed catalog:", error?.message || error);
+    return NextResponse.json({
+      success: true,
+      products: SEED_PRODUCTS,
+      categories: SEED_CATEGORIES,
+      brands: SEED_BRANDS,
+      settings: null,
+      customerPrices: [],
+      isFallback: true,
+    });
   }
 }

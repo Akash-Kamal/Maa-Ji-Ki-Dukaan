@@ -9,10 +9,9 @@ export default function CustomerLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-screen flex flex-col bg-white overflow-x-hidden">
-      <BeveragePatternBackground variant="page" />
+    <div className="relative min-h-screen flex flex-col bg-[#f8fafc] text-charcoal-900 overflow-x-hidden">
       <CustomerNavbar />
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {children}
       </main>
       <CustomerFooter />
